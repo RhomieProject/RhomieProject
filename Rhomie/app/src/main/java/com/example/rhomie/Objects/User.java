@@ -1,7 +1,6 @@
 package com.example.rhomie.Objects;
-
-
 import java.util.HashMap;
+import java.util.Objects;
 
 public class User implements IUser{
     private String email;
@@ -12,7 +11,7 @@ public class User implements IUser{
     private String id;
     private static final int PASSWORDLENGTH = 6;
 
-    /* Default Contructor */
+    /* Default Constructor */
     public User () {
         this.email = "";
         this.password= "";
@@ -20,7 +19,6 @@ public class User implements IUser{
         last_name = "";
         phone_number = "";
         id = "";
-
     }
     /* Constructor */
     public User (String em,String pass) {
@@ -30,7 +28,6 @@ public class User implements IUser{
         last_name = "";
         phone_number = "";
         id = "";
-
     }
 
     /* Full Constructor*/
@@ -42,7 +39,6 @@ public class User implements IUser{
         this.phone_number = pn;
         this.id = id;
     }
-
 
     /* Email */
     @Override
@@ -62,14 +58,19 @@ public class User implements IUser{
     }
 
     public void setPassword(String p) {
-        if (p.length() >= PASSWORDLENGTH)
-            this.password = p;
+        String message = "password need to be up to 6 letters";
+        try {
+            if (p.length() >= PASSWORDLENGTH)
+                this.password = p;
+            else throw new Exception(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /* Name */
     public String getFullName() {
-        String full_name = first_name +' '+last_name;
-        return full_name;
+        return first_name +' '+last_name;
     }
 
     public void setFirstName(String fn) {
@@ -127,13 +128,13 @@ public class User implements IUser{
         String ln = hash.get("last_name").toString();
         String pn = hash.get("phone_number").toString();
         String id = hash.get("id").toString();
-        User user = new User(em, p, fn, ln, pn, id);
-        return user;
+        return new User(em, p, fn, ln, pn, id);
+
     }
 
     @Override
     public int isValid() {
-        if(this==null)
+        if(this == null)
             return 0;
         //TODO check if all the attribute are correct
         return -1;
