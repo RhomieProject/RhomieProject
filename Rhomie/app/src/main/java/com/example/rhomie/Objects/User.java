@@ -1,6 +1,7 @@
 package com.example.rhomie.Objects;
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class User implements IUser{
     private String email;
@@ -9,7 +10,9 @@ public class User implements IUser{
     private String last_name;
     private String phone_number;
     private String id;
-    private static final int PASSWORDLENGTH = 6;
+    private static final int MINPASSWORDLENGTH = 6;
+    private static final int MINNAMELENGTH = 2;
+
 
     /* Default Constructor */
     public User () {
@@ -58,14 +61,7 @@ public class User implements IUser{
     }
 
     public void setPassword(String p) {
-        String message = "password need to be up to 6 letters";
-        try {
-            if (p.length() >= PASSWORDLENGTH)
-                this.password = p;
-            else throw new Exception(message);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        this.password = p;
     }
 
     /* Name */
@@ -137,6 +133,48 @@ public class User implements IUser{
         if(this == null)
             return 0;
         //TODO check if all the attribute are correct
+        if(getFirstName().length() < MINNAMELENGTH || !onlyAlphabetic(getFirstName()))
+            return 1;
+        if(getLastName().length() < MINNAMELENGTH || !onlyAlphabetic(getLastName()))
+            return 2;
+        if(getID().length() != 9 || !onlyDigit(getID()))
+            return 3;
+        //TODO how to check if its start in 05
+        if(getPhoneNumber().length() != 10 || !onlyDigit(getPhoneNumber()))
+            return 4;
+        if(!isEmail(getEmail()))
+            return 5;
+        if (getPassword().toString().length() < MINPASSWORDLENGTH)
+            return 6;
         return -1;
+    }
+
+
+    private boolean onlyAlphabetic(String s) {
+        char[] chars = s.toCharArray();
+        for(char c : chars){
+            if(Character.isDigit(c))
+                return false;
+        }
+        return true;
+    }
+    private boolean onlyDigit(String s) {
+        char[] chars = s.toCharArray();
+        for(char c : chars){
+            if(!Character.isDigit(c))
+                return false;
+        }
+        return true;
+    }
+
+    private  boolean isEmail(String s) {
+        String email = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+        Pattern pat = Pattern.compile(email);
+        if (s == null)
+            return false;
+        return pat.matcher(s).matches();
     }
 }
