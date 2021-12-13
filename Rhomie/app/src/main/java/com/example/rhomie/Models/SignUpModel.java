@@ -36,32 +36,30 @@ public class SignUpModel extends Observable implements ISignUpModel {
     //TODO if we need that
     }
 
-    @Override
-    public void isIn(IUser user) {
-    //TODO check if user exist in Authentication database.
 
-        mAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())
-                .addOnSuccessListener(suc->{
-                    databaseReference.child(mAuth.getUid()).setValue(user)
-                      .addOnSuccessListener(suc2->{
-                            setChanged();
-                            notifyObservers(true);
-
-                    }).addOnFailureListener(fail->{
-                        setChanged();
-                        notifyObservers(false);
-                    });
-
-                }).addOnFailureListener(fail->{
-                    setChanged();
-                    notifyObservers(false);
-        });
-    }
 
     @Override
     public void addUser(IUser user) {
 
+        mAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())
+                .addOnSuccessListener(suc->{
+                    databaseReference.child(mAuth.getUid()).setValue(user)
+                            .addOnSuccessListener(suc2->{
+                                //success to add user to authentication database and realtime database.users.
+                                setChanged();
+                                notifyObservers(-1);
 
+                            }).addOnFailureListener(fail->{
+                                //success to add user to authentication database but not to the realtime database.users.
+                                setChanged();
+                                notifyObservers(1);
+                            });
+
+                }).addOnFailureListener(fail->{
+                    // failed to add user to authentication database - probably he is exist already.
+                    setChanged();
+                    notifyObservers(2);
+                });
 
         /*
         AtomicBoolean success = new AtomicBoolean(false);

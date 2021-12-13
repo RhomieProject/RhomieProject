@@ -53,20 +53,27 @@ public class SignUpConroller implements ISingUpController , Observer {
         if(signupCode == -1){
 
             //TODO change isIn method to addUser method.
-            model.isIn(user);
+            model.addUser(user);
 
 
         }
     }
 
-    @Override
+    /** this function called automatic from SignUpModel.addUser()
+     *  gets -1 if addUser success to add to authentication and realtime database
+     *  gets 1 if addUser added to authentication but not to realtime database
+     *  gets 2 if add user failed to add user to authentication database
+    */
+     @Override
     public void update(Observable o, Object arg) {
-        if((boolean) arg){
+        int keyCode = (int) arg;
+        if(keyCode == -1){
             view.singUpSuccess("success to sign up!");
-        }else {
-            view.singUpError("failed to add to authentication");
+        }else if(keyCode == 1){
+            Log.e("firebase", "the user added to the authentication but not to realtime database");
+        }else if (keyCode == 2){
+            view.singUpError("this email already signed!");
         }
-
 
     }
 }

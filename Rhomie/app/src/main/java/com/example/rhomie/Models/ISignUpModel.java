@@ -16,7 +16,7 @@ public interface ISignUpModel {
      * @param user
      * @return
      */
-    public void  isIn(IUser user);
+//    public void  isIn(IUser user);
 
     /**
      * adds the user to the authentication database
