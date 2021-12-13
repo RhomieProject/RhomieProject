@@ -19,4 +19,13 @@ public class MainActivity extends AppCompatActivity {
 }
 
 
-//sigh up
+//TODO sigh up - Authentication database
+//
+
+//TODO log in
+
+//TODO update user
+
+//TODO ADD ITEM all processes
+
+//TODO view items as a list

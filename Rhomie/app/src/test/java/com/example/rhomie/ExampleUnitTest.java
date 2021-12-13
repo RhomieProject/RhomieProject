@@ -13,5 +13,15 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
+    }@Test
+    public void Observer() {
+        constoller c = new constoller();
+        model m = new model();
+
+        m.addObserver(c);
+        m.setNews("hello");
+        assertEquals("hello", c.getNews());
+        System.out.println(c.getNews());
+
     }
 }

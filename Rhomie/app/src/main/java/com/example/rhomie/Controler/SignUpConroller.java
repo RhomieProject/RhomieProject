@@ -8,7 +8,10 @@ import com.example.rhomie.Objects.IUser;
 import com.example.rhomie.Objects.User;
 import com.example.rhomie.View.ISingUpView;
 
-public class SignUpConroller implements ISingUpController {
+import java.util.Observable;
+import java.util.Observer;
+
+public class SignUpConroller implements ISingUpController , Observer {
 
     private ISingUpView view;
     private ISignUpModel model;
@@ -16,6 +19,8 @@ public class SignUpConroller implements ISingUpController {
     public SignUpConroller(ISingUpView view) {
         this.view = view;
         model = new SignUpModel();
+
+        ((SignUpModel)model).addObserver(this);
     }
 
     @Override
@@ -46,10 +51,22 @@ public class SignUpConroller implements ISingUpController {
             view.singUpError("is not correct password");
         }
         if(signupCode == -1){
-            if(model.addUser(user)==false){
-                Log.e(getClass().getName(),"the addUser() function on SignUpModel that should add user to the firebase failed");
-            }
-            view.singUpSuccess("success to sign up!");
+
+            //TODO change isIn method to addUser method.
+            model.isIn(user);
+
+
         }
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if((boolean) arg){
+            view.singUpSuccess("success to sign up!");
+        }else {
+            view.singUpError("failed to add to authentication");
+        }
+
+
     }
 }
