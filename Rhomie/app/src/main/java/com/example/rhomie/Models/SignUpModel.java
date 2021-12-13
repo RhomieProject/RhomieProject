@@ -22,7 +22,7 @@ public class SignUpModel implements ISignUpModel {
     @Override
     public boolean addUser(IUser user) {
         AtomicBoolean success = new AtomicBoolean(false);
-        databaseReference.push().setValue(user).addOnSuccessListener(suc->{
+        databaseReference.child(user.getID()).setValue(user).addOnSuccessListener(suc->{
             success.set(true);
         }).addOnFailureListener(fail->{
             success.set(false);
