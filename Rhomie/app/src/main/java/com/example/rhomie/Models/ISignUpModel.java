@@ -1,8 +1,6 @@
 package com.example.rhomie.Models;
 
 import com.example.rhomie.Objects.IUser;
-import com.example.rhomie.View.ISingUpView;
-import com.google.android.gms.tasks.Task;
 
 public interface ISignUpModel {
 

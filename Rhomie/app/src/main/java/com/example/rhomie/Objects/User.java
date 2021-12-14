@@ -148,6 +148,17 @@ public class User implements IUser{
             return 6;
         return -1;
     }
+    public int isValid(String email,String password) {
+        if(this == null)
+            return 0;
+        if(email.length() == 0)
+            return 1;
+        if (password.length() == 0)
+            return 2;
+        if(!isEmail(email))
+            return 3;
+        return -1;
+    }
 
 
     private boolean onlyAlphabetic(String s) {
@@ -177,4 +188,6 @@ public class User implements IUser{
             return false;
         return pat.matcher(s).matches();
     }
+
+
 }
