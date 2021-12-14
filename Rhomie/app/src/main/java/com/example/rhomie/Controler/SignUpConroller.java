@@ -55,7 +55,6 @@ public class SignUpConroller implements ISingUpController , Observer {
             //TODO change isIn method to addUser method.
             model.addUser(user);
 
-
         }
     }
 

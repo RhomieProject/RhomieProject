@@ -51,6 +51,7 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
     @Override
     public void signUpSuccess(String massage) {
         Toast.makeText(SignUpActivity.this, massage, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(SignUpActivity.this, AddItemView.class));//TODO
     }
 
     @Override
