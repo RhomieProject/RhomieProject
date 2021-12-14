@@ -4,9 +4,7 @@ import android.util.Log;
 
 import com.example.rhomie.Models.ISignUpModel;
 import com.example.rhomie.Models.SignUpModel;
-import com.example.rhomie.Objects.IUser;
 import com.example.rhomie.Objects.User;
-import com.example.rhomie.View.ISingUpView;
 
 import java.util.Observable;
 import java.util.Observer;
