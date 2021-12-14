@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.rhomie.Controler.ISignUpController;
@@ -16,6 +17,7 @@ import com.example.rhomie.R;
 public class SignUpActivity extends AppCompatActivity implements ISignUpView {
     private EditText first_name, last_name, id, phone_number, email, password;
     private ISignUpController controllerSignUp;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,8 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
         phone_number = findViewById(R.id.edtxtPhoneNumber);
         email = findViewById(R.id.edtxtEmail);
         password = findViewById(R.id.edtxtPassword);
+
+        progressBar = findViewById(R.id.progressBar);
     }
 
     public void sendClick(View view){
@@ -39,6 +43,8 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
         String phone_numberS = phone_number.getText().toString();
         String emailS = email.getText().toString();
         String passwordS = password.getText().toString();
+
+        progressBar.setVisibility(View.VISIBLE);
 
         //calls to the controller the dos the rest.
         controllerSignUp.OnSignUp(f_nameS,l_nameS,idS,phone_numberS,emailS,passwordS);
@@ -50,12 +56,14 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
 
     @Override
     public void signUpSuccess(String massage) {
+        progressBar.setVisibility(View.INVISIBLE);
         Toast.makeText(SignUpActivity.this, massage, Toast.LENGTH_SHORT).show();
         startActivity(new Intent(SignUpActivity.this, AddItemView.class));//TODO
     }
 
     @Override
     public void signUpError(String massage) {
+        progressBar.setVisibility(View.INVISIBLE);
         Toast.makeText(SignUpActivity.this, massage, Toast.LENGTH_SHORT).show();
     }
 }

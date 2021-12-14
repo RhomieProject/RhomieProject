@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rhomie">
         <activity
-<<<<<<< Updated upstream
             android:name=".View.MyAccountActivity"
             android:exported="false" />
         <activity
@@ -21,9 +20,6 @@
             android:exported="false" />
         <activity
             android:name=".View.SignInActivity"
-=======
-            android:name=".View.AddItemView"
->>>>>>> Stashed changes
             android:exported="false" />
         <activity
             android:name=".View.SignUpActivity"
