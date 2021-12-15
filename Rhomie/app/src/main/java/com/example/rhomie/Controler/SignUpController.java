@@ -66,7 +66,6 @@ public class SignUpController implements ISignUpController, Observer {
     public void update(Observable o, Object arg) {
         int keyCode = (int) arg;
         if(keyCode == -1){
-            view.goToLoginScreen();
             view.signUpSuccess("Successfully signed up!");
         }else if(keyCode == 1){
             Log.e("firebase", "the user added to the authentication but not to realtime database");

@@ -31,10 +31,10 @@ public class SignInController implements ISignInController, Observer {
             Log.e("user", "problem in login"); //its mean code problem.
 
         if(signInCode == 1)
-            view.signInError("Email required");
+            view.signInError("Email is required");
 
         if(signInCode == 2)
-            view.signInError("Password required");
+            view.signInError("Password is required");
 
         if(signInCode ==3)
             view.signInError("Invalid email");
@@ -47,7 +47,6 @@ public class SignInController implements ISignInController, Observer {
     public void update(Observable o, Object arg) {
         int keyCode = (int) arg;
         if(keyCode == -1){
-            view.GoToHomePage();
             view.signInSuccess("Successfully logged in!");
         }
         else if (keyCode == 1){

@@ -1,4 +1,11 @@
 package com.example.rhomie.Objects;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -7,9 +14,10 @@ public class Item {
     private int item_id;
     private Address address;
     private Flags flags;
-    private Date check_in;
-    private Date check_out;
-    private int guest_number;
+    private String check_in;
+    private String check_out;
+    private String guest_number;
+    private String dateFormat;
 
     /* Default Constructor */
     public Item () {
@@ -18,11 +26,11 @@ public class Item {
         flags = null;
         check_in = null;
         check_out = null;
-        guest_number = 0;
+        guest_number = "";
     }
 
     /* Full Constructor */
-    public Item (int i,Address a,Flags f,Date ci, Date co, int gn) {
+    public Item (int i,Address a,Flags f,String ci, String co, String gn) {
         this.item_id = i;
         this.address = a;
         this.flags = f;
@@ -41,7 +49,7 @@ public class Item {
         return this.address;
     }
 
-    public void setAddress (String c,String s,int sn,int f, int an) {
+    public void setAddress (String c,String s,String sn,String f, String an) {
         this.address = new Address(c ,s ,sn ,f ,an);
     }
 
@@ -55,29 +63,29 @@ public class Item {
     }
 
     /* Check In */
-    public Date getCheckIn () {
+    public String getCheckIn () {
         return this.check_in;
     }
 
-    public void setCheckIn (Date in) {
+    public void setCheckIn (String in) {
         this.check_in = in;
     }
 
     /* Check Out */
-    public Date getCheckOut () {
+    public String getCheckOut () {
         return this.check_out;
     }
 
-    public void setCheckOut (Date out) {
+    public void setCheckOut (String out) {
         this.check_out = out;
     }
 
     /* Guest Number */
-    public int getGuestNumber () {
+    public String getGuestNumber () {
         return this.guest_number;
     }
 
-    public void setGuestNumber (int gn) {
+    public void setGuestNumber (String gn) {
         this.guest_number = gn;
     }
 
@@ -92,4 +100,55 @@ public class Item {
         return item;
     }
 
+    public int isValid() {
+        if(this == null)
+            return 0;
+        //TODO check if all the attribute are correct
+
+/*
+        if (!isDate(getCheckIn()))
+            return 1;
+        if(!isDate(getCheckOut()))
+            return 2;
+*/
+        if(getGuestNumber().length() == 0 || getGuestNumber().length() > 2 || !onlyDigit(getGuestNumber()))
+            return 3;
+        if(getAddress().getCity().length() < 2 || !onlyAlphabetic(getAddress().getCity()))
+            return 4;
+        if(getAddress().getStreet().length() < 2 || !onlyAlphabetic(getAddress().getStreet()))
+            return 5;
+        if(getAddress().getStreetNumber().length() == 0 || !onlyDigit(getAddress().getStreetNumber()))
+            return 6;
+        //TODO how to check if its start in 05
+
+        return -1;
+    }
+
+    private boolean onlyAlphabetic(String s) {
+        char[] chars = s.toCharArray();
+        for(char c : chars){
+            if(Character.isDigit(c))
+                return false;
+        }
+        return true;
+    }
+    private boolean onlyDigit(String s) {
+        char[] chars = s.toCharArray();
+        for(char c : chars){
+            if(!Character.isDigit(c))
+                return false;
+        }
+        return true;
+    }
+
+    public boolean isDate(String dateStr) {
+        DateFormat sdf = new SimpleDateFormat(this.dateFormat);
+        sdf.setLenient(false);
+        try {
+            sdf.parse(dateStr);
+        } catch (ParseException e) {
+            return false;
+        }
+        return true;
+    }
 }

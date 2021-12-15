@@ -27,19 +27,16 @@ public class SignInActivity extends AppCompatActivity implements ISignInView {
         password = findViewById(R.id.Password);
     }
 
-    public void GoToHome(View view) {
+    public void onLogin(View view) {
         String emailS = email.getText().toString();
         String passwordS = password.getText().toString();
         controllerSignIn.OnSignIn(emailS, passwordS);
     }
 
-    public void GoToHomePage(){
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
-    }
     @Override
     public void signInSuccess(String massage) {
         Toast.makeText(SignInActivity.this, massage, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(SignInActivity.this, HomeActivity.class));//TODO
     }
     @Override
     public void signInError(String massage) {

@@ -1,44 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".View.AddItemView">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Add Item"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="40dp"
+        tools:context=".View.AddItemView">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:onClick="ClickAddItem"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Add Item"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/AddItemButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="ClickAddItem"
+            android:text="Add Item"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/WiFiCheckBox" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.884"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.912" />
+
+        <EditText
+            android:id="@+id/checkInEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="check in"
+            android:inputType="date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <EditText
+            android:id="@+id/checkOutEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:hint="check out"
+            android:inputType="date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkInEditText" />
+
+        <EditText
+            android:id="@+id/GuestNumberEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:hint="guest number"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkOutEditText" />
+
+        <CheckBox
+            android:id="@+id/kosherCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="20dp"
+            android:text="Kosher"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ApartmentNumberEditText" />
+
+        <CheckBox
+            android:id="@+id/parkinCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="5dp"
+            android:text="Parking"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/accessibilityCheckBox" />
+
+        <CheckBox
+            android:id="@+id/animalCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="5dp"
+            android:text="Animals"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kosherCheckBox" />
+
+        <CheckBox
+            android:id="@+id/accessibilityCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="5dp"
+            android:text="Accessibility"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/animalCheckBox" />
+
+        <CheckBox
+            android:id="@+id/smokingCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="5dp"
+            android:text="Smoking"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/parkinCheckBox" />
+
+        <CheckBox
+            android:id="@+id/WiFiCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="5dp"
+            android:text="WiFi"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/smokingCheckBox" />
+
+        <EditText
+            android:id="@+id/CityEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:hint="City"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/GuestNumberEditText" />
+
+        <EditText
+            android:id="@+id/StreetEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:hint="Street"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CityEditText" />
+
+        <EditText
+            android:id="@+id/StreetNumberEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:hint="Street Number"
+            android:inputType="numberSigned"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/StreetEditText" />
+
+        <EditText
+            android:id="@+id/FloorEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:hint="Floor"
+            android:inputType="numberSigned"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/StreetNumberEditText" />
+
+        <EditText
+            android:id="@+id/ApartmentNumberEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:hint="Apartment Number"
+            android:inputType="numberSigned"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/FloorEditText" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

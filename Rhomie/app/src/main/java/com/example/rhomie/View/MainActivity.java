@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
 //TODO update user
 
-//TODO ADD ITEM - view page and intent from.
+//TODO ADD ITEM all processes.      working about that.
 //
 
 

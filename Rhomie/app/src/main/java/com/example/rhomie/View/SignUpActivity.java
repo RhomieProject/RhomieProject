@@ -49,16 +49,12 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
         //calls to the controller the dos the rest.
         controllerSignUp.OnSignUp(f_nameS,l_nameS,idS,phone_numberS,emailS,passwordS);
     }
-    public void goToLoginScreen(){
-        Intent intent = new Intent(this, SignInActivity.class);
-        startActivity(intent);
-    }
 
     @Override
     public void signUpSuccess(String massage) {
         progressBar.setVisibility(View.INVISIBLE);
         Toast.makeText(SignUpActivity.this, massage, Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(SignUpActivity.this, AddItemView.class));//TODO
+        startActivity(new Intent(SignUpActivity.this, SignInActivity.class));//TODO
     }
 
     @Override

@@ -45,11 +45,11 @@
         app:layout_constraintTop_toBottomOf="@+id/EmailAddress" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/AddItemButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
-        android:onClick="GoToHome"
+        android:onClick="onLogin"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

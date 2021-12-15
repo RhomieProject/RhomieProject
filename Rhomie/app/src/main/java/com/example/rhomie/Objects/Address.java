@@ -7,21 +7,21 @@ public class Address {
 
     private String city;
     private String street;
-    private int street_number;
-    private int floor;
-    private int apartment_number;
+    private String street_number;
+    private String floor;
+    private String apartment_number;
 
     /* Default Constructor */
     public Address () {
         city = "";
         street = "";
-        street_number = 0;
-        floor = 0;
-        apartment_number = 0;
+        street_number = "";
+        floor = "";
+        apartment_number = "";
     }
 
     /* Full Constructor */
-    public Address (String c,String s,int sn,int f, int an) {
+    public Address (String c,String s,String sn,String f, String an) {
         this.city = c;
         this.street = s;
         this.street_number = sn;
@@ -48,29 +48,29 @@ public class Address {
     }
 
     /* Street Number */
-    public int getStreetNumber () {
+    public String getStreetNumber () {
         return this.street_number;
     }
 
-    public void setStreetNumber (int sn) {
+    public void setStreetNumber (String sn) {
         this.street_number = sn;
     }
 
     /* Floor */
-    public int getFloor () {
+    public String getFloor () {
         return this.floor;
     }
 
-    public void setFloor (int f) {
+    public void setFloor (String f) {
         this.floor = f;
     }
 
     /* Apartment Number */
-    public int getApartmentNumber () {
+    public String getApartmentNumber () {
         return this.apartment_number;
     }
 
-    public void setApartmentNumber (int an) {
+    public void setApartmentNumber (String an) {
         this.apartment_number = an;
     }
 
