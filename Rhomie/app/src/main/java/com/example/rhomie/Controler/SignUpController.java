@@ -31,22 +31,22 @@ public class SignUpController implements ISignUpController, Observer {
             Log.e("user","user cant be null"); //its mean code problem.
         }
         if(signupCode == 1){
-            view.signUpError("is not correct first name");
+            view.signUpError("First name consists only letters");
         }
         if(signupCode == 2){
-            view.signUpError("is not correct last name");
+            view.signUpError("Last name consists only letters");
         }
         if(signupCode == 3){
-            view.signUpError("is not correct id");
+            view.signUpError("ID consists only digits and should be equal to 9");
         }
         if(signupCode == 4){
-            view.signUpError("is not correct phone number");
+            view.signUpError("Phone number consists only digits and should be equal to 10");
         }
         if(signupCode == 5){
-            view.signUpError("is not correct email");
+            view.signUpError("This is not an email");
         }
         if(signupCode == 6){
-            view.signUpError("is not correct password");
+            view.signUpError("Password must be up than 6");
         }
         if(signupCode == -1){
 
@@ -67,11 +67,11 @@ public class SignUpController implements ISignUpController, Observer {
         int keyCode = (int) arg;
         if(keyCode == -1){
             view.goToLoginScreen();
-            view.signUpSuccess("success to sign up!");
+            view.signUpSuccess("Successfully signed up!");
         }else if(keyCode == 1){
             Log.e("firebase", "the user added to the authentication but not to realtime database");
         }else if (keyCode == 2){
-            view.signUpError("this email already signed!");
+            view.signUpError("Email already exists!");
         }
 
     }

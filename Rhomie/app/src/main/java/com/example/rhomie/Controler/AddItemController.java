@@ -1,15 +1,9 @@
 package com.example.rhomie.Controler;
 
-import android.view.View;
-import android.widget.ProgressBar;
-
 import com.example.rhomie.Models.AddItemModel;
-import com.example.rhomie.Objects.Address;
-import com.example.rhomie.Objects.Flags;
 import com.example.rhomie.Objects.Item;
 import com.example.rhomie.View.AddItemView;
 
-import java.util.Date;
 import java.util.Observable;
 import java.util.Observer;
 
