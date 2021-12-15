@@ -73,4 +73,9 @@ public class MyAccountActivity extends AppCompatActivity {
         });
 
     }
+
+    public void goToAddItem(View view) {
+        startActivity(new Intent(MyAccountActivity.this, AddItemView.class));
+
+    }
 }
