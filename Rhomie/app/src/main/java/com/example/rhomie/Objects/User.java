@@ -10,8 +10,13 @@ public class User implements IUser{
     private String last_name;
     private String phone_number;
     private String id;
-    private static final int MINPASSWORDLENGTH = 6;
+    private static final int EMPTYFIELD = 0;
     private static final int MINNAMELENGTH = 2;
+    private static final int MINPASSWORDLENGTH = 6;
+    private static final int IDLENGTH = 9;
+    private static final int PHONELENGTH = 10;
+
+
 
 
     /* Default Constructor */
@@ -49,12 +54,11 @@ public class User implements IUser{
         return email;
     }
 
-
     public void setEmail (String e) {
         this.email = e;
     }
-    /* Password */
 
+    /* Password */
     @Override
     public String getPassword() {
         return this.password;
@@ -65,6 +69,7 @@ public class User implements IUser{
     }
 
     /* Name */
+    @Override
     public String getFullName() {
         return first_name +' '+last_name;
     }
@@ -76,8 +81,8 @@ public class User implements IUser{
     public void setLastName(String ln) {
         this.last_name = ln;
     }
-    /* Phone Number */
 
+    /* Phone Number */
     @Override
     public String getPhoneNumber() {
         return this.phone_number;
@@ -137,23 +142,23 @@ public class User implements IUser{
             return 1;
         if(getLastName().length() < MINNAMELENGTH || !onlyAlphabetic(getLastName()))
             return 2;
-        if(getID().length() != 9 || !onlyDigit(getID()))
+        if(getID().length() != IDLENGTH || !onlyDigit(getID()))
             return 3;
         //TODO how to check if its start in 05
-        if(getPhoneNumber().length() != 10 || !onlyDigit(getPhoneNumber()))
+        if(getPhoneNumber().length() != PHONELENGTH || !onlyDigit(getPhoneNumber()))
             return 4;
         if(!isEmail(getEmail()))
             return 5;
-        if (getPassword().toString().length() < MINPASSWORDLENGTH)
+        if (getPassword().length() < MINPASSWORDLENGTH)
             return 6;
         return -1;
     }
     public int isValid(String email,String password) {
         if(this == null)
             return 0;
-        if(email.length() == 0)
+        if(email.length() == EMPTYFIELD)
             return 1;
-        if (password.length() == 0)
+        if (password.length() == EMPTYFIELD)
             return 2;
         if(!isEmail(email))
             return 3;
