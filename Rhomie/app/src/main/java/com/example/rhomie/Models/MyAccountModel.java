@@ -33,7 +33,7 @@ public class MyAccountModel extends Observable implements IMyAccountModel {
 
     @Override
     public void getItems() {
-        databaseReference.child("ol9IqSmDlTb9JqcR1C8FdQ35mBx2").addValueEventListener(new ValueEventListener() {
+        databaseReference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ArrayList<Item> items = new ArrayList<>();
