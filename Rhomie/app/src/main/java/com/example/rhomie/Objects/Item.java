@@ -132,6 +132,20 @@ public class Item {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "item_id=" + item_id +
+                ", address=" + address +
+                ", flags=" + flags +
+                ", check_in='" + check_in + '\'' +
+                ", check_out='" + check_out + '\'' +
+                ", guest_number='" + guest_number + '\'' +
+                ", dateFormat='" + dateFormat + '\'' +
+                '}';
+    }
+
     private boolean onlyDigit(String s) {
         char[] chars = s.toCharArray();
         for(char c : chars){
