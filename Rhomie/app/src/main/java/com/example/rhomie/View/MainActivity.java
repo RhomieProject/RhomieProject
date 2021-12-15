@@ -30,13 +30,15 @@ public class MainActivity extends AppCompatActivity {
 }
 
 
-//TODO sigh up - Authentication database
-//
+//TODO sigh up - Authentication database.   done.
+
 
 //TODO log in
 
 //TODO update user
 
-//TODO ADD ITEM all processes
+//TODO ADD ITEM all processes.      working about that.
+//
+
 
 //TODO view items as a list
