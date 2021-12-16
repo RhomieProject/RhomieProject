@@ -5,4 +5,5 @@ public interface IMyAccountController {
     public void getItems();
 
 
+    void Logout();
 }

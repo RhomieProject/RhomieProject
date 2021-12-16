@@ -26,6 +26,11 @@ public class MyAccountController implements IMyAccountController, Observer {
     }
 
     @Override
+    public void Logout() {
+        model.Logout();
+    }
+
+    @Override
     public void update(Observable o, Object arg) {
         ArrayList<Item> items = (ArrayList<Item>) arg;
         if (items != null){

@@ -52,4 +52,9 @@ public class MyAccountModel extends Observable implements IMyAccountModel {
 
 
     }
+
+    @Override
+    public void Logout() {
+        FirebaseAuth.getInstance().signOut();
+    }
 }

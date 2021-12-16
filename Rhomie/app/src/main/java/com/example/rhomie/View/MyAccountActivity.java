@@ -60,13 +60,8 @@ public class MyAccountActivity extends AppCompatActivity implements IMyAccountVi
 
         //------------------------------
 
-        logout =  (Button) findViewById(R.id.Logoutbutton);
-        logout.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MyAccountActivity.this, MainActivity.class));
-            }
-        });
+        logout = findViewById(R.id.Logoutbutton);
+
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("users");
         userID = user.getUid();
@@ -102,6 +97,12 @@ public class MyAccountActivity extends AppCompatActivity implements IMyAccountVi
 
     public void goToAddItem(View view) {
         startActivity(new Intent(MyAccountActivity.this, AddItemView.class));
+
+    }
+
+    public void Logout(View view){
+        controller.Logout();
+        startActivity(new Intent(MyAccountActivity.this, MainActivity.class));
 
     }
 
