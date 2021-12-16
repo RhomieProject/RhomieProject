@@ -3,25 +3,35 @@ package com.example.rhomie.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.rhomie.Controler.AddItemController;
+import com.example.rhomie.Controller.AddItemController;
 import com.example.rhomie.Objects.Address;
 import com.example.rhomie.Objects.Flags;
 import com.example.rhomie.R;
 
+import java.util.Calendar;
+
 public class AddItemView extends AppCompatActivity {
-    private EditText check_in, check_out,guest_number, city, street, street_number, floor, apartment_number;
+    private EditText guest_number, city, street, street_number, floor, apartment_number;
+    private TextView check_in, check_out;
     private CheckBox kosher, animals, accessibility, parking, smoking, wi_fi;
     private ProgressBar progressBar;
     private AddItemController controller;
-    DatePickerDialog.OnDateSetListener dateListener;
+    DatePickerDialog.OnDateSetListener dateListenerIn,dateListenerOut;
+    final Calendar c = Calendar.getInstance();
+    int day = c.get(Calendar.DAY_OF_MONTH);
+    int month = c.get(Calendar.MONTH);
+    int year = c.get(Calendar.YEAR);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +40,10 @@ public class AddItemView extends AppCompatActivity {
 
         controller = new AddItemController(this);
 
-        check_in = findViewById(R.id.checkInEditText);
-        check_out = findViewById(R.id.checkOutEditText);
+        check_in = findViewById(R.id.checkInText);
+        check_out = findViewById(R.id.checkOutText);
+        setDateIn(check_in);
+        setDateOut(check_out);
 
         guest_number = findViewById(R.id.GuestNumberEditText);
         city = findViewById(R.id.CityEditText);
@@ -42,7 +54,7 @@ public class AddItemView extends AppCompatActivity {
         kosher = findViewById(R.id.kosherCheckBox);
         animals = findViewById(R.id.animalCheckBox);
         accessibility = findViewById(R.id.accessibilityCheckBox);
-        parking = findViewById(R.id.parkinCheckBox);
+        parking = findViewById(R.id.parkingCheckBox);
         smoking = findViewById(R.id.smokingCheckBox);
         wi_fi = findViewById(R.id.WiFiCheckBox);
 
@@ -84,5 +96,49 @@ public class AddItemView extends AppCompatActivity {
     public void AddItemError(String massage){
         progressBar.setVisibility(View.INVISIBLE);
         Toast.makeText(AddItemView.this, massage, Toast.LENGTH_SHORT).show();
+    }
+
+    private void setDateIn(TextView date){
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        AddItemView.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        dateListenerIn, year, month, day);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+        dateListenerIn = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month + 1;
+                String dateToStr = dayOfMonth + "/" + month + "/" + year;
+                date.setText(dateToStr);
+            }
+        };
+    }
+
+    private void setDateOut(TextView date) {
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        AddItemView.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        dateListenerOut, year, month, day);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+        dateListenerOut = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month + 1;
+                String dateToStr = dayOfMonth + "/" + month + "/" + year;
+                date.setText(dateToStr);
+            }
+        };
+
+
     }
 }

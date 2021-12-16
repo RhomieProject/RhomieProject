@@ -13,7 +13,7 @@
         tools:context=".View.AddItemView">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/AddItemText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -48,29 +48,25 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.912" />
 
-        <EditText
-            android:id="@+id/checkInEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/checkInText"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
             android:layout_marginTop="20dp"
-            android:ems="10"
-            android:hint="check in"
-            android:inputType="date"
+            android:hint="Check In"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/AddItemText" />
 
-        <EditText
-            android:id="@+id/checkOutEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:ems="10"
-            android:hint="check out"
-            android:inputType="date"
+        <TextView
+            android:id="@+id/checkOutText"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="Check Out"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkInEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/checkInText" />
 
         <EditText
             android:id="@+id/GuestNumberEditText"
@@ -79,15 +75,17 @@
             android:layout_marginTop="5dp"
             android:ems="10"
             android:hint="guest number"
-            android:inputType="textPersonName"
+            android:inputType="numberSigned"
+            android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkOutEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/checkOutText" />
 
         <CheckBox
             android:id="@+id/kosherCheckBox"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="48dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="20dp"
             android:text="Kosher"
@@ -95,9 +93,9 @@
             app:layout_constraintTop_toBottomOf="@+id/ApartmentNumberEditText" />
 
         <CheckBox
-            android:id="@+id/parkinCheckBox"
+            android:id="@+id/parkingCheckBox"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="48dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="5dp"
             android:text="Parking"
@@ -107,7 +105,7 @@
         <CheckBox
             android:id="@+id/animalCheckBox"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="48dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="5dp"
             android:text="Animals"
@@ -117,7 +115,7 @@
         <CheckBox
             android:id="@+id/accessibilityCheckBox"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="48dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="5dp"
             android:text="Accessibility"
@@ -127,17 +125,17 @@
         <CheckBox
             android:id="@+id/smokingCheckBox"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="48dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="5dp"
             android:text="Smoking"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/parkinCheckBox" />
+            app:layout_constraintTop_toBottomOf="@+id/parkingCheckBox" />
 
         <CheckBox
             android:id="@+id/WiFiCheckBox"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="48dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="5dp"
             android:text="WiFi"
@@ -152,6 +150,7 @@
             android:ems="10"
             android:hint="City"
             android:inputType="textPersonName"
+            android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/GuestNumberEditText" />
@@ -164,6 +163,7 @@
             android:ems="10"
             android:hint="Street"
             android:inputType="textPersonName"
+            android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/CityEditText" />
@@ -176,6 +176,7 @@
             android:ems="10"
             android:hint="Street Number"
             android:inputType="numberSigned"
+            android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/StreetEditText" />
@@ -188,6 +189,7 @@
             android:ems="10"
             android:hint="Floor"
             android:inputType="numberSigned"
+            android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/StreetNumberEditText" />
@@ -200,6 +202,7 @@
             android:ems="10"
             android:hint="Apartment Number"
             android:inputType="numberSigned"
+            android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/FloorEditText" />

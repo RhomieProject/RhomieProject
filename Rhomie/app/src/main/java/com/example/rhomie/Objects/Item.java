@@ -1,11 +1,9 @@
 package com.example.rhomie.Objects;
-import java.text.DateFormat;
+import android.os.Build;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.time.format.ResolverStyle;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -104,13 +102,10 @@ public class Item {
         if(this == null)
             return 0;
         //TODO check if all the attribute are correct
-
-/*
-        if (!isDate(getCheckIn()))
+        if (getCheckIn().isEmpty())
             return 1;
-        if(!isDate(getCheckOut()))
+        if(getCheckOut().isEmpty())
             return 2;
-*/
         if(getGuestNumber().length() == 0 || getGuestNumber().length() > 2 || !onlyDigit(getGuestNumber()))
             return 3;
         if(getAddress().getCity().length() < 2 || !onlyAlphabetic(getAddress().getCity()))
@@ -119,8 +114,10 @@ public class Item {
             return 5;
         if(getAddress().getStreetNumber().length() == 0 || !onlyDigit(getAddress().getStreetNumber()))
             return 6;
-        //TODO how to check if its start in 05
-
+        if(!isGreater(getCheckIn()))
+            return 7;
+        if(!isValidDate(getCheckIn(),getCheckOut()))
+            return 8;
         return -1;
     }
 
@@ -155,14 +152,43 @@ public class Item {
         return true;
     }
 
-    public boolean isDate(String dateStr) {
-        DateFormat sdf = new SimpleDateFormat(this.dateFormat);
-        sdf.setLenient(false);
+    public boolean isValidDate(String check_in, String check_out)  {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date dateIn = null;
+        Date dateOut = null;
         try {
-            sdf.parse(dateStr);
+            dateIn = sdf.parse(check_in);
         } catch (ParseException e) {
-            return false;
+            e.printStackTrace();
         }
-        return true;
+        try {
+            dateOut = sdf.parse(check_out);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if(dateOut.after(dateIn))
+            return true;
+
+        return false;
+    }
+    public boolean isGreater(String dateStr)  {
+        Date currentDate = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        Date date = null;
+        try {
+            date = sdf.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        /*
+        LocalDate currDate = LocalDate.now();
+        LocalDate date = LocalDate.parse(dateStr);
+
+         */
+        if(date.after(currentDate))
+            return true;
+        return false;
     }
 }
