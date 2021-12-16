@@ -101,7 +101,6 @@ public class Item {
     public int isValid() {
         if(this == null)
             return 0;
-        //TODO check if all the attribute are correct
         if (getCheckIn().isEmpty())
             return 1;
         if(getCheckOut().isEmpty())
@@ -166,7 +165,6 @@ public class Item {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
         if(dateOut.after(dateIn))
             return true;
 
@@ -175,18 +173,12 @@ public class Item {
     public boolean isGreater(String dateStr)  {
         Date currentDate = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
         Date date = null;
         try {
             date = sdf.parse(dateStr);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        /*
-        LocalDate currDate = LocalDate.now();
-        LocalDate date = LocalDate.parse(dateStr);
-
-         */
         if(date.after(currentDate))
             return true;
         return false;

@@ -24,7 +24,6 @@ public class AddItemController implements Observer {
         model.addObserver(this);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public void OnAddItem(Address address, Flags flags, String check_in, String check_out, String guest_number){
 
         Item item = new Item(0,address, flags, check_in, check_out, guest_number);
