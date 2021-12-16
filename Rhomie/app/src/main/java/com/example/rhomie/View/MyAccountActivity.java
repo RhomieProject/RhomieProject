@@ -12,9 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.rhomie.Controler.IMyAccountController;
-import com.example.rhomie.Controler.MyAccountController;
-import com.example.rhomie.Objects.IItem;
+import com.example.rhomie.Controller.IMyAccountController;
+import com.example.rhomie.Controller.MyAccountController;
 import com.example.rhomie.Objects.IUser;
 import com.example.rhomie.Objects.Item;
 import com.example.rhomie.Objects.User;

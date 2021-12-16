@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.rhomie.Controler.ISignUpController;
-import com.example.rhomie.Controler.SignUpController;
+import com.example.rhomie.Controller.ISignUpController;
+import com.example.rhomie.Controller.SignUpController;
 import com.example.rhomie.R;
 
 

@@ -1,11 +1,8 @@
-package com.example.rhomie.Controler;
-
-import android.app.Activity;
+package com.example.rhomie.Controller;
 
 import com.example.rhomie.Models.IMyAccountModel;
 import com.example.rhomie.Models.MyAccountModel;
 import com.example.rhomie.Objects.Item;
-import com.example.rhomie.R;
 import com.example.rhomie.View.IMyAccountView;
 
 import java.util.ArrayList;

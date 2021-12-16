@@ -1,6 +1,4 @@
-package com.example.rhomie.Controler;
-
-import java.util.Observable;
+package com.example.rhomie.Controller;
 
 public interface ISignInController {
 

@@ -1,4 +1,4 @@
-package com.example.rhomie.Controler;
+package com.example.rhomie.Controller;
 
 public interface ISignUpController {
 

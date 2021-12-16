@@ -1,4 +1,4 @@
-package com.example.rhomie.Controler;
+package com.example.rhomie.Controller;
 
 import android.util.Log;
 import com.example.rhomie.Models.ISignUpModel;

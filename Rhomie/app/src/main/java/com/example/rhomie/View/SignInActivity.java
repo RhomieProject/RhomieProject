@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.rhomie.Controler.ISignInController;
-import com.example.rhomie.Controler.SignInController;
+import com.example.rhomie.Controller.ISignInController;
+import com.example.rhomie.Controller.SignInController;
 import com.example.rhomie.R;
 
 public class SignInActivity extends AppCompatActivity implements ISignInView {
