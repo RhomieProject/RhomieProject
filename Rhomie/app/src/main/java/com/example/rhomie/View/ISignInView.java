@@ -4,4 +4,5 @@ public interface ISignInView {
 
     public void signInSuccess(String massage);
     public void signInError(String massage);
+
 }

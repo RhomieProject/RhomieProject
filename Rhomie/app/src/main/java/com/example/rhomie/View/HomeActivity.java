@@ -1,11 +1,9 @@
 package com.example.rhomie.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import com.example.rhomie.R;
 
 public class HomeActivity extends AppCompatActivity {
@@ -17,12 +15,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void goToMyAccount(View view) {
-        Intent intent = new Intent(this, MyAccountActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, MyAccountActivity.class));
     }
 
     public void goToApartmentsList(View view) {
-        Intent intent = new Intent(this, ApartmentListActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, ApartmentListActivity.class));
     }
 }

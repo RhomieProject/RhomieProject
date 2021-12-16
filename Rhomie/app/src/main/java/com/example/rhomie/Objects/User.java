@@ -1,6 +1,6 @@
 package com.example.rhomie.Objects;
+
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class User implements IUser{
@@ -15,9 +15,6 @@ public class User implements IUser{
     private static final int MINPASSWORDLENGTH = 6;
     private static final int IDLENGTH = 9;
     private static final int PHONELENGTH = 10;
-
-
-
 
     /* Default Constructor */
     public User () {
@@ -153,6 +150,7 @@ public class User implements IUser{
             return 6;
         return -1;
     }
+
     public int isValid(String email,String password) {
         if(this == null)
             return 0;
@@ -174,6 +172,7 @@ public class User implements IUser{
         }
         return true;
     }
+
     private boolean onlyDigit(String s) {
         char[] chars = s.toCharArray();
         for(char c : chars){

@@ -1,12 +1,10 @@
 package com.example.rhomie.Controller;
 
 import android.util.Log;
-
 import com.example.rhomie.Models.ISignInModel;
 import com.example.rhomie.Models.SignInModel;
 import com.example.rhomie.Objects.User;
 import com.example.rhomie.View.ISignInView;
-
 import java.util.Observable;
 import java.util.Observer;
 

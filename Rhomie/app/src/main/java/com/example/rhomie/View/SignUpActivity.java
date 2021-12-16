@@ -1,18 +1,15 @@
 package com.example.rhomie.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.example.rhomie.Controller.ISignUpController;
 import com.example.rhomie.Controller.SignUpController;
 import com.example.rhomie.R;
-
 
 public class SignUpActivity extends AppCompatActivity implements ISignUpView {
     private EditText first_name, last_name, id, phone_number, email, password;

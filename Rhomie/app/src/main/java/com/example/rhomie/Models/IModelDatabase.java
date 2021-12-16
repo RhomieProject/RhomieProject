@@ -1,7 +1,6 @@
 package com.example.rhomie.Models;
 
 import com.example.rhomie.Objects.User;
-
 import java.util.HashMap;
 import java.util.List;
 

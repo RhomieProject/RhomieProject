@@ -5,7 +5,6 @@ import com.example.rhomie.Models.ISignUpModel;
 import com.example.rhomie.Models.SignUpModel;
 import com.example.rhomie.Objects.User;
 import com.example.rhomie.View.ISignUpView;
-
 import java.util.Observable;
 import java.util.Observer;
 
@@ -17,7 +16,6 @@ public class SignUpController implements ISignUpController, Observer {
     public SignUpController(ISignUpView view) {
         this.view = view;
         model = new SignUpModel();
-
         ((SignUpModel)model).addObserver(this);
     }
 

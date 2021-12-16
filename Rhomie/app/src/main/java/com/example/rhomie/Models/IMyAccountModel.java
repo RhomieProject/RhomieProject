@@ -4,5 +4,7 @@ public interface IMyAccountModel{
 
     public void getItems();
 
-    void Logout();
+    public void getDetails();
+
+    public void Logout();
 }

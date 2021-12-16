@@ -1,9 +1,7 @@
 package com.example.rhomie.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
 import com.example.rhomie.R;
 
 public class ApartmentListActivity extends AppCompatActivity {

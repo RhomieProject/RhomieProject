@@ -16,7 +16,7 @@ public class ModelDatabase {
 
     public Task<Void> add(User user){
         //TODO there is problem to add '.' to path reference.
-//        return databaseReference.child(user.getEmail()).setValue(user);
+        //return databaseReference.child(user.getEmail()).setValue(user);
         return databaseReference.push().setValue(user);
     }
 

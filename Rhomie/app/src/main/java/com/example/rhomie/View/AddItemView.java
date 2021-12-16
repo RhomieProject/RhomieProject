@@ -1,8 +1,8 @@
 package com.example.rhomie.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -13,12 +13,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.rhomie.Controller.AddItemController;
 import com.example.rhomie.Objects.Address;
 import com.example.rhomie.Objects.Flags;
 import com.example.rhomie.R;
-
 import java.util.Calendar;
 
 public class AddItemView extends AppCompatActivity {
@@ -40,17 +38,20 @@ public class AddItemView extends AppCompatActivity {
 
         controller = new AddItemController(this);
 
+        guest_number = findViewById(R.id.GuestNumberEditText);
         check_in = findViewById(R.id.checkInText);
         check_out = findViewById(R.id.checkOutText);
         setDateIn(check_in);
         setDateOut(check_out);
 
-        guest_number = findViewById(R.id.GuestNumberEditText);
+        //Address
         city = findViewById(R.id.CityEditText);
         street = findViewById(R.id.StreetEditText);
         street_number = findViewById(R.id.StreetNumberEditText);
         floor = findViewById(R.id.FloorEditText);
         apartment_number = findViewById(R.id.ApartmentNumberEditText);
+
+        //Flags
         kosher = findViewById(R.id.kosherCheckBox);
         animals = findViewById(R.id.animalCheckBox);
         accessibility = findViewById(R.id.accessibilityCheckBox);
@@ -85,7 +86,9 @@ public class AddItemView extends AppCompatActivity {
 
         progressBar.setVisibility(View.VISIBLE);
 
-        controller.OnAddItem(address, flags, CheckIn,CheckOut,GuestNumber);
+        controller.OnAddItem(address, flags, CheckIn, CheckOut, GuestNumber);
+        startActivity(new Intent(this, MyAccountActivity.class));
+
     }
 
     public void AddItemSuccess(String massage){
@@ -138,7 +141,6 @@ public class AddItemView extends AppCompatActivity {
                 date.setText(dateToStr);
             }
         };
-
-
     }
+
 }

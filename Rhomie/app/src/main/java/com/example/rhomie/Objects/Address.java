@@ -1,6 +1,5 @@
 package com.example.rhomie.Objects;
 
-
 import java.util.HashMap;
 
 public class Address {

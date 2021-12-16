@@ -1,9 +1,7 @@
 package com.example.rhomie.Objects;
-import android.os.Build;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -113,9 +111,9 @@ public class Item {
             return 5;
         if(getAddress().getStreetNumber().length() == 0 || !onlyDigit(getAddress().getStreetNumber()))
             return 6;
-        if(!isGreater(getCheckIn()))
+        if(!isValidDate(getCheckIn()))
             return 7;
-        if(!isValidDate(getCheckIn(),getCheckOut()))
+        if(!isGreater(getCheckIn(),getCheckOut()))
             return 8;
         return -1;
     }
@@ -151,7 +149,21 @@ public class Item {
         return true;
     }
 
-    public boolean isValidDate(String check_in, String check_out)  {
+    public boolean isValidDate(String dateStr)  {
+        Date currentDate = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = null;
+        try {
+            date = sdf.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if(date.after(currentDate))
+            return true;
+        return false;
+    }
+
+    public boolean isGreater(String check_in, String check_out)  {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date dateIn = null;
         Date dateOut = null;
@@ -170,17 +182,5 @@ public class Item {
 
         return false;
     }
-    public boolean isGreater(String dateStr)  {
-        Date currentDate = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = null;
-        try {
-            date = sdf.parse(dateStr);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        if(date.after(currentDate))
-            return true;
-        return false;
-    }
+
 }

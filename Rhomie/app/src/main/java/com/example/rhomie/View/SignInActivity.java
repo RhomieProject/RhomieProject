@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.rhomie.Controller.ISignInController;
 import com.example.rhomie.Controller.SignInController;
 import com.example.rhomie.R;

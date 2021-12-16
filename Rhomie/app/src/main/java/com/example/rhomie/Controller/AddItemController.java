@@ -1,15 +1,10 @@
 package com.example.rhomie.Controller;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
 import com.example.rhomie.Models.AddItemModel;
 import com.example.rhomie.Objects.Address;
 import com.example.rhomie.Objects.Flags;
 import com.example.rhomie.Objects.Item;
 import com.example.rhomie.View.AddItemView;
-
 import java.util.Observable;
 import java.util.Observer;
 
