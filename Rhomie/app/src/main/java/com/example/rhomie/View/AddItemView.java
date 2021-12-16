@@ -87,13 +87,14 @@ public class AddItemView extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
 
         controller.OnAddItem(address, flags, CheckIn, CheckOut, GuestNumber);
-        startActivity(new Intent(this, MyAccountActivity.class));
 
     }
 
     public void AddItemSuccess(String massage){
         progressBar.setVisibility(View.INVISIBLE);
         Toast.makeText(this, massage, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, MyAccountActivity.class));
+
     }
 
     public void AddItemError(String massage){
