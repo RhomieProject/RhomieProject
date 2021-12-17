@@ -95,4 +95,8 @@ public class Flags {
         flags.put("Wi_Fi", this.Wi_Fi);
         return flags;
     }
+
+    public String flagsToString() {
+        return "kosher: "+kosher+"\nanimals: "+animals+"\naccessibility: "+accessibility+"\nparking: "+parking+"\nsmoking: "+smoking+"\nWi_Fi: "+Wi_Fi;
+    }
 }

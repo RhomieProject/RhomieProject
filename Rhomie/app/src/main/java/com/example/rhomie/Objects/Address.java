@@ -82,4 +82,14 @@ public class Address {
         address.put("apartment_number", this.apartment_number);
         return address;
     }
+
+    public String addressToString(){
+        if (getFloor().equals("") && !getApartmentNumber().equals(""))
+            return this.city + " - " + street + " " + street_number + " number: " + apartment_number;
+        else if (getApartmentNumber().equals("") && !getFloor().equals(""))
+            return this.city + " - " + street + " " + street_number + " floor: " + floor;
+        else if (getFloor().equals("") && getApartmentNumber().equals(""))
+            return this.city + " - " + street + " " + street_number;
+        return this.city + " - " + street + " " + street_number + " floor: " + floor + " number: " + apartment_number;
+    }
 }

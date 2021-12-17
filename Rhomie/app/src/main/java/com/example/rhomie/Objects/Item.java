@@ -14,6 +14,7 @@ public class Item {
     private String check_out;
     private String guest_number;
     private String dateFormat;
+    private boolean is_available;
 
     /* Default Constructor */
     public Item () {
@@ -23,6 +24,7 @@ public class Item {
         check_in = null;
         check_out = null;
         guest_number = "";
+        is_available = true;
     }
 
     /* Full Constructor */
@@ -83,6 +85,14 @@ public class Item {
 
     public void setGuestNumber (String gn) {
         this.guest_number = gn;
+    }
+
+    public boolean getIsAvailable() {
+        return this.is_available;
+    }
+
+    public void setIsAvailable(boolean ia){
+        this.is_available = ia;
     }
 
     public HashMap<String,Object> itemToMap () {
@@ -181,6 +191,16 @@ public class Item {
             return true;
 
         return false;
+    }
+
+    public String itemToString(boolean bool){
+        if(bool){
+            return "Address: "+address.addressToString()+"\nDate: "+check_in+" - "+check_out+" GuestNumber: "+guest_number+"\n"+flags.flagsToString()+"\n";
+        }
+        else
+        if(getIsAvailable())
+            return "City: "+address.getCity()+" Date: "+check_in+" - "+check_out+" GuestNumber: "+guest_number+"\n"+flags.flagsToString()+"\n";
+        return null;
     }
 
 }
