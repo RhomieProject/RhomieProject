@@ -78,4 +78,8 @@ public class MyAccountActivity extends AppCompatActivity implements IMyAccountVi
     public void goToAddItem(View view) {
         startActivity(new Intent(MyAccountActivity.this, AddItemView.class));
     }
+
+    public void goToHomePage(View view) {
+        startActivity(new Intent(MyAccountActivity.this, HomeActivity.class));
+    }
 }

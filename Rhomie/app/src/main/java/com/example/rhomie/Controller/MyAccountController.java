@@ -15,16 +15,12 @@ import java.util.Observer;
 public class MyAccountController implements IMyAccountController, Observer {
     private IMyAccountModel model;
     private IMyAccountView view;
-    private FirebaseUser user;
-    private DatabaseReference reference;
     ArrayList<String> d = new ArrayList<>();
 
     public MyAccountController(IMyAccountView view){
         this.view = view;
         this.model = new MyAccountModel();
         ((Observable)model).addObserver(this);
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("users");
     }
 
     @Override

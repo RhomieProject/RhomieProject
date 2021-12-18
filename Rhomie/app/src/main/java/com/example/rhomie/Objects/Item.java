@@ -35,6 +35,8 @@ public class Item {
         this.check_in = ci;
         this.check_out = co;
         this.guest_number = gn;
+        is_available = true;
+
     }
 
     /* Item ID */
@@ -197,8 +199,7 @@ public class Item {
         if(bool){
             return "Address: "+address.addressToString()+"\nDate: "+check_in+" - "+check_out+" GuestNumber: "+guest_number+"\n"+flags.flagsToString()+"\n";
         }
-        else
-        if(getIsAvailable())
+        else if(getIsAvailable())
             return "City: "+address.getCity()+" Date: "+check_in+" - "+check_out+" GuestNumber: "+guest_number+"\n"+flags.flagsToString()+"\n";
         return null;
     }

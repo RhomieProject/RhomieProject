@@ -25,9 +25,9 @@ public class AddItemController implements Observer {
         int addItemCode = item.isValid();
 
         if(addItemCode == 1)
-            view.AddItemError("Check In is required");
+            view.AddItemError("Check-In is required");
         if(addItemCode == 2)
-            view.AddItemError("Check Out is required");
+            view.AddItemError("Check-Out is required");
         if(addItemCode == 3)
             view.AddItemError("Guest Number is required");
         if(addItemCode == 4)
@@ -37,9 +37,9 @@ public class AddItemController implements Observer {
         if(addItemCode == 6)
             view.AddItemError("Street Number is required");
         if(addItemCode == 7)
-            view.AddItemError("Check In should be greater than Today");
+            view.AddItemError("Check-In should be later than Today");
         if(addItemCode == 8)
-            view.AddItemError("Check Out should be greater than Check In");
+            view.AddItemError("Check-Out should be later than Check-In");
 
         if(addItemCode == -1)
             model.addItem(item);

@@ -144,4 +144,9 @@ public class AddItemView extends AppCompatActivity {
         };
     }
 
+
+    public void goToHomePage(View view) {
+        startActivity(new Intent(AddItemView.this, MyAccountActivity.class));
+
+    }
 }

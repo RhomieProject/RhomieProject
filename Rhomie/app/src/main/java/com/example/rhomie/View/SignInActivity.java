@@ -35,7 +35,7 @@ public class SignInActivity extends AppCompatActivity implements ISignInView {
     @Override
     public void signInSuccess(String massage) {
         Toast.makeText(SignInActivity.this, massage, Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(SignInActivity.this, HomeActivity.class));//TODO
+        startActivity(new Intent(SignInActivity.this, HomeActivity.class));
     }
     @Override
     public void signInError(String massage) {
