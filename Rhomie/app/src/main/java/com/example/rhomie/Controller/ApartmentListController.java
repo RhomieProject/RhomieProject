@@ -29,6 +29,5 @@ public class ApartmentListController implements IApartmentListController, Observ
         ArrayList<Item> items = (ArrayList<Item>) arg;
         if(items != null)
             view.drawItems(items);
-
     }
 }

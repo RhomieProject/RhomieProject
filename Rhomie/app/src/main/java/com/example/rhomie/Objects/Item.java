@@ -200,7 +200,7 @@ public class Item {
             return "Address: "+address.addressToString()+"\nDate: "+check_in+" - "+check_out+" GuestNumber: "+guest_number+"\n"+flags.flagsToString()+"\n";
         }
         else if(getIsAvailable())
-            return "City: "+address.getCity()+" Date: "+check_in+" - "+check_out+" GuestNumber: "+guest_number+"\n"+flags.flagsToString()+"\n";
+            return "City: "+address.getCity()+"\nDate: "+check_in+" - "+check_out+"\nGuestNumber: "+guest_number+"\n"; //+flags.flagsToString()+"\n";
         return null;
     }
 

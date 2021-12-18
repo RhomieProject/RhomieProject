@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rhomie">
         <activity
+            android:name=".View.ItemActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.AddItemView"
             android:exported="false" />
         <activity

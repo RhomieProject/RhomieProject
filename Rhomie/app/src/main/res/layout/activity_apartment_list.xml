@@ -10,13 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
+        <Button
+            android:id="@+id/homeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="goToHomePage"
+            android:text="Home" />
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
             android:text="Available Apartments"
             android:textSize="24dp" />
 
@@ -24,15 +28,8 @@
             android:id="@+id/listViewText"
             android:layout_width="match_parent"
             android:layout_height="510dp"
-            android:layout_marginTop="30dp" />
+            android:layout_marginTop="30dp"/>
 
-        <Button
-            android:id="@+id/homeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:onClick="goToHomePage"
-            android:text="Home" />
     </LinearLayout>
 
 
