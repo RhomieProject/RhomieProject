@@ -33,7 +33,7 @@
         android:id="@+id/MyAccountButton"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
         android:backgroundTint="@color/black"
         android:isScrollContainer="false"
@@ -50,7 +50,6 @@
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="50dp"
         android:backgroundTint="@color/black"
         android:onClick="goToApartmentsList"
         android:text="Apartments"
@@ -58,20 +57,19 @@
         app:iconGravity="textTop"
         app:iconSize="60dp"
         app:layout_constraintStart_toEndOf="@+id/MyAccountButton"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="@+id/MyAccountButton" />
 
     <Button
         android:id="@+id/SettingButton"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/black"
         android:text="Setting"
         app:icon="@drawable/setting_icon"
         app:iconGravity="textTop"
         app:iconSize="60dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/MyAccountButton"
         app:layout_constraintTop_toBottomOf="@+id/MyAccountButton"
         tools:ignore="MissingConstraints" />
 
