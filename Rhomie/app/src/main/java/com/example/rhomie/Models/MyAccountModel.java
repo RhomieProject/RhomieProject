@@ -32,9 +32,9 @@ public class MyAccountModel extends Observable implements IMyAccountModel {
         databaseReference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ArrayList<String> items = new ArrayList<>();
+                ArrayList<Item> items = new ArrayList<>();
                 for (DataSnapshot dts: snapshot.getChildren()) {
-                        items.add(dts.getValue(Item.class).itemToString(true));
+                        items.add(dts.getValue(Item.class));
                 }
                 setChanged();
                 notifyObservers(items);

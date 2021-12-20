@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,9 +16,9 @@ import com.example.rhomie.R;
 import java.util.ArrayList;
 
 public class MyAccountActivity extends AppCompatActivity implements IMyAccountView{
-    public TextView greetingTextView,emailTextView,fullNameTextView, phoneNumberTextView;
+    private TextView greetingTextView,emailTextView,fullNameTextView, phoneNumberTextView;
     private ListView listView;
-    private ArrayAdapter<Item> adapter;
+    private ArrayAdapter<String> adapter;
     private IMyAccountController controller;
 
     @Override
@@ -25,31 +26,36 @@ public class MyAccountActivity extends AppCompatActivity implements IMyAccountVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_account);
 
-        controller = new MyAccountController(this);
-        controller.getItems();
-
-        //-----------------------------
         listView = findViewById(R.id.listView);
-
-//        items = new ArrayList<>();
-//        items.add(new Item());
-
-//        adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, items);
-        listView.setAdapter(adapter);
-
-        //------------------------------
-
         greetingTextView = findViewById(R.id.welcome);
         emailTextView = findViewById(R.id.email);
         fullNameTextView = findViewById(R.id.fullName);
         phoneNumberTextView = findViewById(R.id.phoneNumber);
-        controller.getDetails();
+
+        controller = new MyAccountController(this);
+        controller.getItems();
     }
 
     @Override
     public void drawItems(ArrayList<Item> items) {
-        adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, items);
+
+        ArrayList<String> itemsS = new ArrayList<>();
+        for(Item item:items){
+            itemsS.add(item.itemToString(true));
+        }
+        adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, itemsS);
         listView.setAdapter(adapter);
+
+//-------------------------------------------------------------------------------//
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //TODO create process for item click.
+
+            }
+        });
     }
 
     @Override
@@ -82,4 +88,5 @@ public class MyAccountActivity extends AppCompatActivity implements IMyAccountVi
     public void goToHomePage(View view) {
         startActivity(new Intent(MyAccountActivity.this, HomeActivity.class));
     }
+
 }

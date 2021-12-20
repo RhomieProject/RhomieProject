@@ -13,8 +13,8 @@ public class Item {
     private String check_in;
     private String check_out;
     private String guest_number;
-    private String dateFormat;
     private boolean is_available;
+    private String fatherID;
 
     /* Default Constructor */
     public Item () {
@@ -25,18 +25,19 @@ public class Item {
         check_out = null;
         guest_number = "";
         is_available = true;
+        fatherID = null;
     }
 
     /* Full Constructor */
-    public Item (int i,Address a,Flags f,String ci, String co, String gn) {
+    public Item (int i,Address a,Flags f,String ci, String co, String gn,String father) {
         this.item_id = i;
         this.address = a;
         this.flags = f;
         this.check_in = ci;
         this.check_out = co;
         this.guest_number = gn;
-        is_available = true;
-
+        this.is_available = true;
+        this.fatherID = father;
     }
 
     /* Item ID */
@@ -97,6 +98,10 @@ public class Item {
         this.is_available = ia;
     }
 
+    public String getFatherID() {
+        return this.fatherID;
+    }
+
     public HashMap<String,Object> itemToMap () {
         HashMap<String, Object> item = new HashMap<>();
         item.put("item_id", this.item_id);
@@ -148,7 +153,6 @@ public class Item {
                 ", check_in='" + check_in + '\'' +
                 ", check_out='" + check_out + '\'' +
                 ", guest_number='" + guest_number + '\'' +
-                ", dateFormat='" + dateFormat + '\'' +
                 '}';
     }
 

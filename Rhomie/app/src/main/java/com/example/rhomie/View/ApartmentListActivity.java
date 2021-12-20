@@ -6,9 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
 import com.example.rhomie.Controller.ApartmentListController;
 import com.example.rhomie.Controller.IApartmentListController;
 import com.example.rhomie.Objects.Item;
+import com.example.rhomie.R;
 import com.example.rhomie.databinding.ActivityApartmentListBinding;
 import java.util.ArrayList;
 
@@ -17,6 +20,7 @@ public class ApartmentListActivity extends AppCompatActivity implements IApartme
    // ListView listView;
     ArrayAdapter<String> adapter;
     private IApartmentListController controller;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,8 @@ public class ApartmentListActivity extends AppCompatActivity implements IApartme
         setContentView(binding.getRoot());
         controller = new ApartmentListController(this);
         controller.getItems();
+        //listView = findViewById(R.id.listViewText);
+
     }
 
     @Override

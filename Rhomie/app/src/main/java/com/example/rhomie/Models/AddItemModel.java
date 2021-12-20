@@ -38,5 +38,9 @@ public class AddItemModel extends Observable {
         databaseUserToItem.child(user).child(push.getKey()).setValue(item);
     }
 
+    public String getUser(){
+        return FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
+    }
+
 
 }
