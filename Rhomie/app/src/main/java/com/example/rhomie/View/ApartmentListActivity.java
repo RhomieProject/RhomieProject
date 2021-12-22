@@ -12,11 +12,11 @@ import com.example.rhomie.Controller.ApartmentListController;
 import com.example.rhomie.Controller.IApartmentListController;
 import com.example.rhomie.Objects.Item;
 import com.example.rhomie.R;
-import com.example.rhomie.databinding.ActivityApartmentListBinding;
+
 import java.util.ArrayList;
 
 public class ApartmentListActivity extends AppCompatActivity implements IApartmentListView{
-    ActivityApartmentListBinding binding;
+    //ActivityApartmentListBinding binding;
    // ListView listView;
     ArrayAdapter<String> adapter;
     private IApartmentListController controller;
@@ -25,11 +25,12 @@ public class ApartmentListActivity extends AppCompatActivity implements IApartme
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityApartmentListBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        //binding = ActivityApartmentListBinding.inflate(getLayoutInflater());
+        //setContentView(binding.getRoot());
+        setContentView(R.layout.activity_apartment_list);
         controller = new ApartmentListController(this);
         controller.getItems();
-        //listView = findViewById(R.id.listViewText);
+        listView = findViewById(R.id.listViewText);
 
     }
 
@@ -41,12 +42,16 @@ public class ApartmentListActivity extends AppCompatActivity implements IApartme
         }
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,itemsS);
         adapter.notifyDataSetChanged();
-        binding.listViewText.setAdapter(adapter);
-        binding.listViewText.setClickable(true);
-        binding.listViewText.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setAdapter(adapter);
+        listView.setClickable(true);
+        //binding.listViewText.setAdapter(adapter);
+        // binding.listViewText.setClickable(true);
+        //binding.listViewText.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(ApartmentListActivity.this,ItemActivity.class);
+                Intent i = new Intent(ApartmentListActivity.this, RequestActivity.class);
+                //i.putExtra("id",items.get(position).getItem());
                 i.putExtra("city",items.get(position).getAddress().getCity());
                 i.putExtra("check_in",items.get(position).getCheckIn());
                 i.putExtra("check_out",items.get(position).getCheckOut());

@@ -18,7 +18,6 @@ public class ApartmentListController implements IApartmentListController, Observ
         ((Observable)model).addObserver(this);
     }
 
-
     @Override
     public void getItems() {
         model.getItems();

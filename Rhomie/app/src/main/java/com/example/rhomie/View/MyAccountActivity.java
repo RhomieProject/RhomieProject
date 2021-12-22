@@ -34,6 +34,7 @@ public class MyAccountActivity extends AppCompatActivity implements IMyAccountVi
 
         controller = new MyAccountController(this);
         controller.getItems();
+        controller.getDetails();
     }
 
     @Override

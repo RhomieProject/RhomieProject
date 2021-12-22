@@ -5,22 +5,31 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.rhomie.Controller.ApartmentListController;
 import com.example.rhomie.Objects.Item;
 import com.example.rhomie.R;
 import com.example.rhomie.databinding.ActivityItemBinding;
 
-public class ItemActivity extends AppCompatActivity implements IRequestView {
-    private ActivityItemBinding binding;
+public class RequestActivity extends AppCompatActivity implements IRequestView {
+    //private ActivityItemBinding binding;
     private ApartmentListController controller;
+    private TextView cityText, checkInText, checkOutText, guestNumberText, flagsText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
-        binding = ActivityItemBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        //binding = ActivityItemBinding.inflate(getLayoutInflater());
+        //setContentView(binding.getRoot());
+
+
+        cityText = findViewById(R.id.city);
+        checkInText = findViewById(R.id.checkIn);
+        checkOutText = findViewById(R.id.checkOut);
+        guestNumberText = findViewById(R.id.guestNumber);
+        flagsText = findViewById(R.id.flags);
 
         Intent intent = this.getIntent();
         if(intent != null){
@@ -30,11 +39,12 @@ public class ItemActivity extends AppCompatActivity implements IRequestView {
             String guest_number = intent.getStringExtra("guest_number");
             String flags = intent.getStringExtra("flags");
 
-            binding.city.setText(city);
-            binding.checkIn.setText(check_in);
-            binding.checkOut.setText(check_out);
-            binding.guestNumber.setText(guest_number);
-            binding.flags.setText(flags);
+
+            cityText.setText(city);
+            checkInText.setText(check_in);
+            checkOutText.setText(check_out);
+            guestNumberText.setText(guest_number);
+            flagsText.setText(flags);
         }
     }
 
