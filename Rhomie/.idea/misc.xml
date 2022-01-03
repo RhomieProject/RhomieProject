@@ -8,11 +8,19 @@
         <entry key="..\:/Users/Gilad/AndroidStudioProjects/Rhomie/app/src/main/res/layout/activity_main_activity2todlete.xml" value="0.16486486486486487" />
         <entry key="..\:/Users/Gilad/AndroidStudioProjects/Rhomie/app/src/main/res/layout/activity_updata_user.xml" value="0.16486486486486487" />
         <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.11891891891891893" />
+        <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/drawable/background.xml" value="0.14797297297297296" />
+        <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/drawable/btn_bg.xml" value="0.14797297297297296" />
+        <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/drawable/btn_bg_blue.xml" value="0.14797297297297296" />
         <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/drawable/ic_launcher_background.xml" value="0.11891891891891893" />
         <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/layout/activity_add_item_view.xml" value="0.16486486486486487" />
+        <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/layout/activity_approval_or_rejection.xml" value="0.264" />
         <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/layout/activity_home.xml" value="0.1" />
-        <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/layout/activity_main.xml" value="0.10844594594594595" />
+        <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/layout/activity_item.xml" value="0.4" />
+        <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/layout/activity_my_account.xml" value="0.264" />
+        <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/layout/activity_my_item.xml" value="0.1375" />
+        <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/layout/activity_my_requests.xml" value="0.1375" />
+        <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/layout/activity_signin.xml" value="0.1375" />
         <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/layout/activity_signup.xml" value="0.1" />
         <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/layout/activity_updata_user.xml" value="0.15472972972972973" />
         <entry key="..\:/Users/Gilad/Documents/GitHub/RhomieProject/Rhomie/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.11891891891891893" />

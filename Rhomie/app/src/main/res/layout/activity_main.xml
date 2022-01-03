@@ -24,6 +24,7 @@
         android:layout_marginTop="100dp"
         android:onClick="goToSignInPage"
         android:text="Sign in"
+        android:background="@drawable/btn_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainText" />
@@ -33,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:background="@drawable/btn_bg"
         android:onClick="goToSignUpPage"
         android:text="Sign up"
         app:layout_constraintEnd_toEndOf="parent"

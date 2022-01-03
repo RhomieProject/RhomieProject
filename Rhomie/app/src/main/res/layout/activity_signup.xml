@@ -108,6 +108,7 @@
         android:layout_marginTop="44dp"
         android:onClick="sendClick"
         android:text="Sign Up"
+        android:background="@drawable/btn_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="parent"
