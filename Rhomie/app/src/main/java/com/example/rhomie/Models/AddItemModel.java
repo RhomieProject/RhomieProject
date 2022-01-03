@@ -20,6 +20,7 @@ public class AddItemModel extends Observable {
 
     public void addItem(Item item){
         DatabaseReference push = databaseReference.push();
+                item.setItem(push.child(push.getKey()).getKey());
                 push.setValue(item)
                 .addOnSuccessListener(suc->{
                     //success

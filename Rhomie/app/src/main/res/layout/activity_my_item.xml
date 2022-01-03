@@ -2,28 +2,27 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.RequestActivity">
+    tools:context=".View.MyItemActivity">
 
     <TextView
-        android:id="@+id/cityTitle"
+        android:id="@+id/AddressTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
-        android:text="City:"
+        android:text="Address:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/city"
+        android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        app:layout_constraintStart_toEndOf="@+id/cityTitle"
-        app:layout_constraintTop_toTopOf="@+id/cityTitle" />
+        app:layout_constraintStart_toEndOf="@+id/AddressTitle"
+        app:layout_constraintTop_toTopOf="@+id/AddressTitle" />
 
     <TextView
         android:id="@+id/checkInTitle"
@@ -31,8 +30,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Check In:"
-        app:layout_constraintStart_toStartOf="@+id/cityTitle"
-        app:layout_constraintTop_toBottomOf="@+id/cityTitle" />
+        app:layout_constraintStart_toStartOf="@+id/AddressTitle"
+        app:layout_constraintTop_toBottomOf="@+id/AddressTitle" />
 
     <TextView
         android:id="@+id/checkOutTitle"
@@ -60,6 +59,15 @@
         android:text="Flags:"
         app:layout_constraintStart_toStartOf="@+id/guestNumberTitle"
         app:layout_constraintTop_toBottomOf="@+id/guestNumberTitle" />
+
+    <TextView
+        android:id="@+id/requestTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Requests:"
+        app:layout_constraintStart_toStartOf="@+id/flagsTitle"
+        app:layout_constraintTop_toBottomOf="@+id/flags" />
 
     <TextView
         android:id="@+id/checkIn"
@@ -92,39 +100,14 @@
         android:layout_marginStart="10dp"
         app:layout_constraintStart_toEndOf="@+id/flagsTitle"
         app:layout_constraintTop_toTopOf="@+id/flagsTitle" />
-
-    <Button
-        android:id="@+id/askForItemButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:text="Ask For Item"
-        android:onClick="askForItem"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ListView
+        android:id="@+id/requestListView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Description:"
-        app:layout_constraintStart_toStartOf="@+id/flagsTitle"
-        app:layout_constraintTop_toBottomOf="@+id/flags" />
-
-    <EditText
-        android:id="@+id/MultiLine"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="5dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:text="hey! I saw your apartment and I'm interested.\nlove to hear for more details :)"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/requestTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

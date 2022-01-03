@@ -26,7 +26,7 @@ public class MyAccountActivity extends AppCompatActivity implements IMyAccountVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_account);
 
-        listView = findViewById(R.id.listView);
+        listView = findViewById(R.id.requestListView);
         greetingTextView = findViewById(R.id.welcome);
         emailTextView = findViewById(R.id.email);
         fullNameTextView = findViewById(R.id.fullName);
@@ -45,15 +45,23 @@ public class MyAccountActivity extends AppCompatActivity implements IMyAccountVi
             itemsS.add(item.itemToString(true));
         }
         adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, itemsS);
+        adapter.notifyDataSetChanged();
         listView.setAdapter(adapter);
+        listView.setClickable(true);
 
 //-------------------------------------------------------------------------------//
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                //TODO create process for item click.
+                Intent i = new Intent(MyAccountActivity.this, MyItemActivity.class);
+                i.putExtra("id",items.get(position).getItem());
+                i.putExtra("address",items.get(position).getAddress().addressToString());
+                i.putExtra("check_in",items.get(position).getCheckIn());
+                i.putExtra("check_out",items.get(position).getCheckOut());
+                i.putExtra("guest_number",items.get(position).getGuestNumber());
+                i.putExtra("flags",items.get(position).getFlags().flagsToString());
+                startActivity(i);
 
             }
         });

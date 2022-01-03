@@ -5,40 +5,41 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.rhomie.Controller.ApartmentListController;
-import com.example.rhomie.Objects.Item;
+import com.example.rhomie.Controller.RequestController;
 import com.example.rhomie.R;
-import com.example.rhomie.databinding.ActivityItemBinding;
 
 public class RequestActivity extends AppCompatActivity implements IRequestView {
-    //private ActivityItemBinding binding;
-    private ApartmentListController controller;
+    private RequestController controller;
     private TextView cityText, checkInText, checkOutText, guestNumberText, flagsText;
+    private EditText descriptionText;
+    private String item_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
-        //binding = ActivityItemBinding.inflate(getLayoutInflater());
-        //setContentView(binding.getRoot());
 
+        controller = new RequestController(this);
 
         cityText = findViewById(R.id.city);
         checkInText = findViewById(R.id.checkIn);
         checkOutText = findViewById(R.id.checkOut);
         guestNumberText = findViewById(R.id.guestNumber);
         flagsText = findViewById(R.id.flags);
+        descriptionText = findViewById(R.id.MultiLine);
 
         Intent intent = this.getIntent();
         if(intent != null){
+            item_id = intent.getStringExtra("id");
             String city = intent.getStringExtra("city");
             String check_in = intent.getStringExtra("check_in");
             String check_out = intent.getStringExtra("check_out");
             String guest_number = intent.getStringExtra("guest_number");
             String flags = intent.getStringExtra("flags");
-
 
             cityText.setText(city);
             checkInText.setText(check_in);
@@ -49,21 +50,24 @@ public class RequestActivity extends AppCompatActivity implements IRequestView {
     }
 
     public void askForItem(View view) {
-//        addRequest();
+        addRequest();
     }
 
     @Override
-    public void addRequest(Item item) {
-
+    public void addRequest() {
+        String message = descriptionText.getText().toString();
+        controller.getDetails(item_id,message);
     }
 
     @Override
     public void OnSuccess(String massage) {
 
+        Toast.makeText(RequestActivity.this, massage, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(RequestActivity.this, HomeActivity.class));
     }
 
     @Override
     public void OnError(String massage) {
-
+        Toast.makeText(RequestActivity.this, massage, Toast.LENGTH_SHORT).show();
     }
 }

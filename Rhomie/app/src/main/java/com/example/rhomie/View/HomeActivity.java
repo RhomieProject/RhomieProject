@@ -21,4 +21,9 @@ public class HomeActivity extends AppCompatActivity {
     public void goToApartmentsList(View view) {
         startActivity(new Intent(this, ApartmentListActivity.class));
     }
+
+    public void goToUpdates(View view) {
+        startActivity(new Intent(this, MyRequestsActivity.class));
+
+    }
 }

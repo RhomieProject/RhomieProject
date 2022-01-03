@@ -3,6 +3,7 @@ package com.example.rhomie.View;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,11 +14,10 @@ import com.example.rhomie.Controller.IApartmentListController;
 import com.example.rhomie.Objects.Item;
 import com.example.rhomie.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ApartmentListActivity extends AppCompatActivity implements IApartmentListView{
-    //ActivityApartmentListBinding binding;
-   // ListView listView;
     ArrayAdapter<String> adapter;
     private IApartmentListController controller;
     private ListView listView;
@@ -25,8 +25,6 @@ public class ApartmentListActivity extends AppCompatActivity implements IApartme
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //binding = ActivityApartmentListBinding.inflate(getLayoutInflater());
-        //setContentView(binding.getRoot());
         setContentView(R.layout.activity_apartment_list);
         controller = new ApartmentListController(this);
         controller.getItems();
@@ -44,14 +42,11 @@ public class ApartmentListActivity extends AppCompatActivity implements IApartme
         adapter.notifyDataSetChanged();
         listView.setAdapter(adapter);
         listView.setClickable(true);
-        //binding.listViewText.setAdapter(adapter);
-        // binding.listViewText.setClickable(true);
-        //binding.listViewText.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(ApartmentListActivity.this, RequestActivity.class);
-                //i.putExtra("id",items.get(position).getItem());
+                i.putExtra("id", items.get(position).getItem());
                 i.putExtra("city",items.get(position).getAddress().getCity());
                 i.putExtra("check_in",items.get(position).getCheckIn());
                 i.putExtra("check_out",items.get(position).getCheckOut());

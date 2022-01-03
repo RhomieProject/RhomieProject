@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rhomie">
         <activity
+            android:name=".View.MyRequestsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.ApprovalOrRejectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.MyItemActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.RequestActivity"
             android:exported="false" />
         <activity

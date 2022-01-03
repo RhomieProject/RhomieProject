@@ -21,7 +21,7 @@ public class AddItemController implements Observer {
 
     public void OnAddItem(Address address, Flags flags, String check_in, String check_out, String guest_number){
 
-        Item item = new Item(0,address, flags, check_in, check_out, guest_number, model.getUser());
+        Item item = new Item(" ",address, flags, check_in, check_out, guest_number, model.getUser());
         int addItemCode = item.isValid();
 
         if(addItemCode == 1)

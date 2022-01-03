@@ -2,12 +2,14 @@ package com.example.rhomie.Objects;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 public class Item {
 
-    private int item_id;
+    private String item_id;
     private Address address;
     private Flags flags;
     private String check_in;
@@ -15,10 +17,12 @@ public class Item {
     private String guest_number;
     private boolean is_available;
     private String fatherID;
+    private ArrayList<Request> requestList;
+    private static int count;
 
     /* Default Constructor */
     public Item () {
-        item_id = 0;
+        item_id = "";
         address = null;
         flags = null;
         check_in = null;
@@ -26,10 +30,11 @@ public class Item {
         guest_number = "";
         is_available = true;
         fatherID = null;
+        requestList = null;
     }
 
     /* Full Constructor */
-    public Item (int i,Address a,Flags f,String ci, String co, String gn,String father) {
+    public Item (String i,Address a,Flags f,String ci, String co, String gn,String father) {
         this.item_id = i;
         this.address = a;
         this.flags = f;
@@ -38,11 +43,16 @@ public class Item {
         this.guest_number = gn;
         this.is_available = true;
         this.fatherID = father;
+        requestList = null;
     }
 
     /* Item ID */
-    public int getItem () {
+    public String getItem () {
         return this.item_id;
+    }
+
+    public void setItem (String itemID) {
+        this.item_id = itemID;
     }
 
     /* Address */
@@ -101,6 +111,15 @@ public class Item {
     public String getFatherID() {
         return this.fatherID;
     }
+
+    public ArrayList<Request> getRequestList(){
+        return requestList;
+    }
+
+    public void addRequest(Request request){
+        requestList.add(count++,request);
+    }
+
 
     public HashMap<String,Object> itemToMap () {
         HashMap<String, Object> item = new HashMap<>();

@@ -111,11 +111,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView"
+        app:layout_constraintTop_toBottomOf="@+id/requestListView"
         tools:ignore="MissingConstraints" />
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/requestListView"
         android:layout_width="match_parent"
         android:layout_height="320dp"
         app:layout_constraintEnd_toEndOf="parent"
