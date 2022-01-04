@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.rhomie.Controller.ISignUpController;
 import com.example.rhomie.Controller.SignUpController;
@@ -15,6 +19,9 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
     private EditText first_name, last_name, id, phone_number, email, password;
     private ISignUpController controllerSignUp;
     private ProgressBar progressBar;
+    private Spinner spinner;
+    private String selectedText;
+    private ArrayAdapter<CharSequence> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +29,24 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
         setContentView(R.layout.activity_signup);
 
         controllerSignUp = new SignUpController(this);
+
+        spinner = findViewById(R.id.spinner);
+        adapter = ArrayAdapter.createFromResource(this,R.array.phone_number_array,R.layout.spinner_layout);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedText = spinner.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         first_name = findViewById(R.id.edtxtFirstName);
         last_name = findViewById(R.id.edtxtLastName);
@@ -37,7 +62,7 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
         String f_nameS = first_name.getText().toString();
         String l_nameS = last_name.getText().toString();
         String idS = id.getText().toString();
-        String phone_numberS = phone_number.getText().toString();
+        String phone_numberS = selectedText + phone_number.getText().toString();
         String emailS = email.getText().toString();
         String passwordS = password.getText().toString();
 

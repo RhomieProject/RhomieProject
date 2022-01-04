@@ -17,11 +17,11 @@ import java.util.Observable;
 public class ApartmentListModel extends Observable implements IApartmentListModel {
 
     private DatabaseReference items;
-    private FirebaseUser user;
+    private String user;
 
     public ApartmentListModel(){
-        items = FirebaseDatabase.getInstance().getReference("items");
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        items = FirebaseDatabase.getInstance().getReference("UserApartments");
+        user = FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
     @Override
@@ -30,10 +30,11 @@ public class ApartmentListModel extends Observable implements IApartmentListMode
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ArrayList<Item> list = new ArrayList<>();
-                for(DataSnapshot dts: snapshot.getChildren()){
-                    Item item = dts.getValue(Item.class);
-                    if(item.getIsAvailable() && !item.getFatherID().equals(user.getUid())) {
-                        list.add(item);
+                for(DataSnapshot userSS: snapshot.getChildren()){
+                    for(DataSnapshot itemSS: userSS.getChildren()) {
+                        Item item = itemSS.getValue(Item.class);
+                        if (item.getIsAvailable() && !item.getFatherID().equals(user))
+                            list.add(item);
                     }
                 }
                 setChanged();

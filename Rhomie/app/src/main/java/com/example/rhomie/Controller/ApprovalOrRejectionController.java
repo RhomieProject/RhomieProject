@@ -30,9 +30,11 @@ public class ApprovalOrRejectionController implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if ((boolean)arg){
-            view.OnSuccess("Successfully");
+        if ((int)arg == 1){
+            view.OnSuccessA("Successfully approval apartment");
         }
+        else if ((int)arg == -1)
+            view.OnSuccessR("Successfully reject apartment");
         else
             view.OnError("Failed");
     }

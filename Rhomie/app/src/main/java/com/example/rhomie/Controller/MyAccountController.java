@@ -28,47 +28,14 @@ public class MyAccountController implements IMyAccountController, Observer {
         model.getItems();
     }
 
-    @Override
-    public void getDetails() {
-        model.getDetails();
-    }
-
-    @Override
-    public void Logout(){
-        model.Logout();
-    }
 
     @Override
     public void update(Observable o, Object arg) {
-        if(arg.getClass().equals(ArrayList.class)){
-            ArrayList<Item> items = (ArrayList<Item>) arg;
-            if(items != null)
-                view.drawItems(items);
-        }
-        else if(arg.getClass().equals(String.class)) {
-            String details = (String) arg;
-            if(details != null){
-                splitString(details);
-                String email = d.get(0);
-                String fullName = d.get(1);
-                String phoneNumber = d.get(2);
-                view.getDetails("Welcome " + fullName + "!", email, fullName, phoneNumber);
-            }
-        }
-    }
+        ArrayList<Item> items = (ArrayList<Item>) arg;
+        if(items != null)
+            view.drawItems(items);
 
-    private void splitString(String s) {
-        char[] chars = s.toCharArray();
-        String word = "";
-        for(char c : chars) {
-            if(c!= '/') {
-                word += c;
-            }
-            else {
-                d.add(word);
-                word = "";
-            }
-        }
+
     }
 
 

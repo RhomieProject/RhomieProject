@@ -23,25 +23,24 @@ public class RequestController implements Observer {
 
     public void setDetails(ArrayList<String> details){
         String item = details.get(0);
-        String message = details.get(1);
-        String fullName = details.get(2);
-        String phoneNumber = details.get(3);
-        addRequest(item,message,fullName,phoneNumber);
+        String user = details.get(1);
+        String message = details.get(2);
+        String fullName = details.get(3);
+        String phoneNumber = details.get(4);
+        addRequest(item,user,message,fullName,phoneNumber);
     }
-    public void getDetails(String item,String message){
-        model.getDetails(item, message);
+    public void getDetails(String item,String user,String message){
+        model.getDetails(item, user, message);
     }
 
-    public void addRequest(String item,String message,String fullName,String phoneNumber){
+    public void addRequest(String item,String user,String message,String fullName,String phoneNumber){
         Request request = new Request("",item,model.getUser(), message,0,fullName,phoneNumber);
         int requestCode = request.isValid();
 
         if(requestCode == 1)
             view.OnError("Description is required");
-//        if(requestCode == 2)
-//            view.OnError("This is your apartment, you cannot send request to yourself");
         if(requestCode == -1)
-            model.addRequest(item,request);
+            model.addRequest(item,user,request);
     }
 
     @Override

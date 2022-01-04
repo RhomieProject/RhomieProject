@@ -50,10 +50,15 @@ public class ApprovalOrRejectionActivity extends AppCompatActivity {
         controller.RejectRequest(reqID,itemID);
     }
 
-    public void OnSuccess(String massage){
+    public void OnSuccessA(String massage){
         Toast.makeText(this, massage, Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, MyAccountActivity.class));
     }
+    public void OnSuccessR(String massage){
+        Toast.makeText(this, massage, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, MyAccountActivity.class));
+    }
+
 
     public void OnError(String massage){
         Toast.makeText(this, massage, Toast.LENGTH_SHORT).show();

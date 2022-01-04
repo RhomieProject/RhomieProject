@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.example.rhomie.Controller.IMyAccountController;
 import com.example.rhomie.Controller.MyAccountController;
@@ -16,7 +15,6 @@ import com.example.rhomie.R;
 import java.util.ArrayList;
 
 public class MyAccountActivity extends AppCompatActivity implements IMyAccountView{
-    private TextView greetingTextView,emailTextView,fullNameTextView, phoneNumberTextView;
     private ListView listView;
     private ArrayAdapter<String> adapter;
     private IMyAccountController controller;
@@ -27,14 +25,9 @@ public class MyAccountActivity extends AppCompatActivity implements IMyAccountVi
         setContentView(R.layout.activity_my_account);
 
         listView = findViewById(R.id.requestListView);
-        greetingTextView = findViewById(R.id.welcome);
-        emailTextView = findViewById(R.id.email);
-        fullNameTextView = findViewById(R.id.fullName);
-        phoneNumberTextView = findViewById(R.id.phoneNumber);
 
         controller = new MyAccountController(this);
         controller.getItems();
-        controller.getDetails();
     }
 
     @Override
@@ -55,25 +48,35 @@ public class MyAccountActivity extends AppCompatActivity implements IMyAccountVi
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(MyAccountActivity.this, MyItemActivity.class);
-                i.putExtra("id",items.get(position).getItem());
+                i.putExtra("item_id",items.get(position).getItem());
+//                i.putExtra("user_id",items.get(position).getFatherID());
                 i.putExtra("address",items.get(position).getAddress().addressToString());
                 i.putExtra("check_in",items.get(position).getCheckIn());
                 i.putExtra("check_out",items.get(position).getCheckOut());
                 i.putExtra("guest_number",items.get(position).getGuestNumber());
                 i.putExtra("flags",items.get(position).getFlags().flagsToString());
+
+                i.putExtra("city", items.get(position).getAddress().getCity());
+                i.putExtra("street", items.get(position).getAddress().getStreet());
+                i.putExtra("street_number", items.get(position).getAddress().getStreetNumber());
+                i.putExtra("floor", items.get(position).getAddress().getFloor());
+                i.putExtra("apartment_number", items.get(position).getAddress().getApartmentNumber());
+
+                i.putExtra("kosher",items.get(position).getFlags().getKosher());
+                i.putExtra("animals",items.get(position).getFlags().getAnimals());
+                i.putExtra("accessibility",items.get(position).getFlags().getAccessibility());
+                i.putExtra("parking",items.get(position).getFlags().getParking());
+                i.putExtra("smoking",items.get(position).getFlags().getSmoking());
+                i.putExtra("wi_fi",items.get(position).getFlags().getWiFi());
+
+
                 startActivity(i);
 
             }
         });
     }
 
-    @Override
-    public void getDetails(String greeting,String email,String fullName,String phoneNumber){
-        this.greetingTextView.setText(greeting);
-        this.emailTextView.setText(email);
-        this.fullNameTextView.setText(fullName);
-        this.phoneNumberTextView.setText(phoneNumber);
-    }
+
 
     @Override
     public void getItemSuccess(String massage) {
@@ -85,17 +88,11 @@ public class MyAccountActivity extends AppCompatActivity implements IMyAccountVi
         Toast.makeText(MyAccountActivity.this, massage, Toast.LENGTH_SHORT).show();
     }
 
-    public void Logout(View view){
-        controller.Logout();
-        startActivity(new Intent(MyAccountActivity.this, MainActivity.class));
-    }
-
     public void goToAddItem(View view) {
-        startActivity(new Intent(MyAccountActivity.this, AddItemView.class));
+        startActivity(new Intent(MyAccountActivity.this, AddItemActivity.class));
     }
 
     public void goToHomePage(View view) {
         startActivity(new Intent(MyAccountActivity.this, HomeActivity.class));
     }
-
 }

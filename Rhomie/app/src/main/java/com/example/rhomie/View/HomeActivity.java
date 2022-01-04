@@ -24,6 +24,10 @@ public class HomeActivity extends AppCompatActivity {
 
     public void goToUpdates(View view) {
         startActivity(new Intent(this, MyRequestsActivity.class));
+    }
+
+    public void goToSetting(View view) {
+        startActivity(new Intent(this, SettingActivity.class));
 
     }
 }

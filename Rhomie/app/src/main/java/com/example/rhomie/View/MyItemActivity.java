@@ -19,7 +19,9 @@ import java.util.ArrayList;
 public class MyItemActivity extends AppCompatActivity {
     private MyItemController controller;
     private TextView addressText, checkInText, checkOutText, guestNumberText, flagsText;
-    private String item_id;
+    private String item_id,check_in,check_out,guest_number,address,flags;
+    private String city,street,street_number,floor,apartment_number;
+    private boolean kosher,animals,accessibility,parking,smoking,wi_fi;
     private ListView listView;
     private ArrayAdapter<String> adapter;
 
@@ -31,6 +33,7 @@ public class MyItemActivity extends AppCompatActivity {
         controller = new MyItemController(this);
 
         listView = findViewById(R.id.requestListView);
+
         addressText = findViewById(R.id.address);
         checkInText = findViewById(R.id.checkIn);
         checkOutText = findViewById(R.id.checkOut);
@@ -39,12 +42,24 @@ public class MyItemActivity extends AppCompatActivity {
 
         Intent intent = this.getIntent();
         if(intent != null) {
-            item_id = intent.getStringExtra("id");
-            String address = intent.getStringExtra("address");
-            String check_in = intent.getStringExtra("check_in");
-            String check_out = intent.getStringExtra("check_out");
-            String guest_number = intent.getStringExtra("guest_number");
-            String flags = intent.getStringExtra("flags");
+            item_id = intent.getStringExtra("item_id");
+            address = intent.getStringExtra("address");
+            check_in = intent.getStringExtra("check_in");
+            check_out = intent.getStringExtra("check_out");
+            guest_number = intent.getStringExtra("guest_number");
+            flags = intent.getStringExtra("flags");
+
+            city = intent.getStringExtra("city");
+            street = intent.getStringExtra("street");
+            street_number = intent.getStringExtra("street_number");
+            floor = intent.getStringExtra("floor");
+            apartment_number = intent.getStringExtra("apartment_number");
+            kosher = intent.getBooleanExtra("kosher",false);
+            animals = intent.getBooleanExtra("animals",false);
+            accessibility  = intent.getBooleanExtra("accessibility",false);
+            parking  = intent.getBooleanExtra("parking",false);
+            smoking  = intent.getBooleanExtra("smoking",false);
+            wi_fi = intent.getBooleanExtra("wi_fi",false);
 
             addressText.setText(address);
             checkInText.setText(check_in);
@@ -67,15 +82,38 @@ public class MyItemActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(MyItemActivity.this, ApprovalOrRejectionActivity.class);
-                i.putExtra("req_id",requestList.get(position).getID());
-                i.putExtra("item_id",requestList.get(position).getItemID());
-                i.putExtra("full_name",requestList.get(position).getFullName());
-                i.putExtra("phone_number",requestList.get(position).getPhoneNumber());
-                i.putExtra("message",requestList.get(position).getMessage());
-                startActivity(i);
-
+                if(requestList.get(position).getStatus()!=1) {
+                    Intent i = new Intent(MyItemActivity.this, ApprovalOrRejectionActivity.class);
+                    i.putExtra("req_id", requestList.get(position).getID());
+                    i.putExtra("item_id", requestList.get(position).getItemID());
+                    i.putExtra("full_name", requestList.get(position).getFullName());
+                    i.putExtra("phone_number", requestList.get(position).getPhoneNumber());
+                    i.putExtra("message", requestList.get(position).getMessage());
+                    startActivity(i);
+                }
             }
         });
+    }
+
+    public void updateItem(View view){
+        Intent i = new Intent(MyItemActivity.this,UpdateItemActivity.class);
+        i.putExtra("item_id",item_id);
+
+        i.putExtra("check_in",check_in);
+        i.putExtra("check_out",check_out);
+        i.putExtra("guest_number",guest_number);
+        i.putExtra("city",city);
+        i.putExtra("street", street);
+        i.putExtra("street_number",street_number);
+        i.putExtra("floor",floor);
+        i.putExtra("apartment_number",apartment_number);
+
+        i.putExtra("kosher",kosher);
+        i.putExtra("animals",animals);
+        i.putExtra("accessibility",accessibility);
+        i.putExtra("parking",parking);
+        i.putExtra("smoking",smoking);
+        i.putExtra("wi_fi",wi_fi);
+        startActivity(i);
     }
 }

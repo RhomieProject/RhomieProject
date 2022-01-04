@@ -4,16 +4,16 @@ import com.example.rhomie.Models.AddItemModel;
 import com.example.rhomie.Objects.Address;
 import com.example.rhomie.Objects.Flags;
 import com.example.rhomie.Objects.Item;
-import com.example.rhomie.View.AddItemView;
+import com.example.rhomie.View.AddItemActivity;
 import java.util.Observable;
 import java.util.Observer;
 
 public class AddItemController implements Observer {
 
     private AddItemModel model;
-    private AddItemView view;
+    private AddItemActivity view;
 
-    public AddItemController(AddItemView activity){
+    public AddItemController(AddItemActivity activity){
         this.view = activity;
         this.model = new AddItemModel();
         model.addObserver(this);

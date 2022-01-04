@@ -18,13 +18,11 @@ import java.util.Observable;
 public class MyRequestsModel extends Observable {
 
     private FirebaseUser user;
-    private DatabaseReference userRequests,items;
+    private DatabaseReference userRequests;
 
     public MyRequestsModel(){
         userRequests = FirebaseDatabase.getInstance().getReference("UserRequests");
         user = FirebaseAuth.getInstance().getCurrentUser();
-        items = FirebaseDatabase.getInstance().getReference("items");
-
     }
 
     public void getRequests() {

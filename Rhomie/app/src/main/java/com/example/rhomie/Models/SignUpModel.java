@@ -8,12 +8,12 @@ import java.util.Observable;
 
 public class SignUpModel extends Observable implements ISignUpModel {
 
-    private DatabaseReference databaseReference;
+    private DatabaseReference users;
     private FirebaseAuth mAuth;
 
     public SignUpModel() {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        this.databaseReference = db.getReference("users");
+        this.users = db.getReference("Users");
         this.mAuth = FirebaseAuth.getInstance();
     }
 
@@ -27,7 +27,7 @@ public class SignUpModel extends Observable implements ISignUpModel {
 
         mAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())
             .addOnSuccessListener(suc->{
-                databaseReference.child(mAuth.getUid()).setValue(user)
+                users.child(mAuth.getUid()).setValue(user)
                     .addOnSuccessListener(suc2->{
                         //success to add user to authentication database and realtime database.users.
                         setChanged();

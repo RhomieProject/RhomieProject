@@ -16,7 +16,7 @@ public class RequestActivity extends AppCompatActivity implements IRequestView {
     private RequestController controller;
     private TextView cityText, checkInText, checkOutText, guestNumberText, flagsText;
     private EditText descriptionText;
-    private String item_id;
+    private String item_id, user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,8 @@ public class RequestActivity extends AppCompatActivity implements IRequestView {
 
         Intent intent = this.getIntent();
         if(intent != null){
-            item_id = intent.getStringExtra("id");
+            item_id = intent.getStringExtra("item_id");
+            user_id = intent.getStringExtra("user_id");
             String city = intent.getStringExtra("city");
             String check_in = intent.getStringExtra("check_in");
             String check_out = intent.getStringExtra("check_out");
@@ -56,7 +57,7 @@ public class RequestActivity extends AppCompatActivity implements IRequestView {
     @Override
     public void addRequest() {
         String message = descriptionText.getText().toString();
-        controller.getDetails(item_id,message);
+        controller.getDetails(item_id,user_id,message);
     }
 
     @Override

@@ -46,7 +46,8 @@ public class ApartmentListActivity extends AppCompatActivity implements IApartme
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(ApartmentListActivity.this, RequestActivity.class);
-                i.putExtra("id", items.get(position).getItem());
+                i.putExtra("item_id", items.get(position).getItem());
+                i.putExtra("user_id", items.get(position).getFatherID());
                 i.putExtra("city",items.get(position).getAddress().getCity());
                 i.putExtra("check_in",items.get(position).getCheckIn());
                 i.putExtra("check_out",items.get(position).getCheckOut());

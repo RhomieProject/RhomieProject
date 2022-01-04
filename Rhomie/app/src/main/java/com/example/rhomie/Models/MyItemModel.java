@@ -20,26 +20,24 @@ import java.util.Observable;
 public class MyItemModel extends Observable {
 
     private final FirebaseUser user;
-    private DatabaseReference items, users, userToItem;
-    private ArrayList<Request> requestList;
-    ArrayList<String> details = new ArrayList<>();
+    private DatabaseReference items, users;
 
     public MyItemModel(){
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        userToItem = db.getReference("UserToItem");
-        users = db.getReference("users");
+        items = db.getReference("UserApartments");
+        users = db.getReference("Users");
         user = FirebaseAuth.getInstance().getCurrentUser();
     }
 
     public void getRequests(String item_id) {
 
-        userToItem.child(user.getUid()).child(item_id).child("requests").addValueEventListener(new ValueEventListener() {
+        items.child(user.getUid()).child(item_id).child("requests").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ArrayList<Request> requestList = new ArrayList<>();
                 for (DataSnapshot dts : snapshot.getChildren()) {
                     Request req = dts.getValue(Request.class);
-                    if((req.getStatus() == 1 || req.getStatus() == 0))
+                    if(req.getStatus() == 1 || req.getStatus() == 0)
                         requestList.add(req);
                 }
                 setChanged();

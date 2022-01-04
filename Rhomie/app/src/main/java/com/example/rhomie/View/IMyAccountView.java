@@ -11,7 +11,6 @@ public interface IMyAccountView {
 
 
     public void drawItems(ArrayList<Item> items);
-    public void getDetails(String greeting,String email,String fullName,String phoneNumber);
     public void getItemSuccess(String massage);
     public void getItemError(String massage);
 

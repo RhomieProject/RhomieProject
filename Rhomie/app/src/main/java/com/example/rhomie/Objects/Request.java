@@ -9,7 +9,7 @@ public class Request {
     private String requestID;
     private String itemID;
     private String fromUserID;
-//    private String toUserID;
+    private String toUserID;
     private String message;
     private int status;
     private String fullName;
@@ -76,13 +76,12 @@ public class Request {
         this.fromUserID = fromUserID;
     }
 
-//    public String getToUserID() {
-//        return toUserID;
-//    }
-//
-//    public void setToUserID(String toUser) {
-//        this.toUserID = toUser;
-//    }
+    public String getToUserID() {
+        return toUserID;
+    }
+    public void setToUserID(String toUser) {
+        this.toUserID = toUser;
+    }
 
     public String getMessage() {
         return message;
@@ -129,7 +128,12 @@ public class Request {
     }
 
     public String requestToString() {
-        return "You have new request from "+fullName;
+        if(getStatus() == 0)
+            return "You have new request from "+fullName+"\n";
+        else if(getStatus() == 1)
+            return "You approved the request from "+fullName+"\nYou can continue communicate with him in his phone number: "+phoneNumber+"\n";
+        else
+            return null;
     }
 
     public String ToString(){

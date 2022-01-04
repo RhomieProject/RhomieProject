@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rhomie">
         <activity
+            android:name=".View.SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.UpdateItemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.UpdateUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.MyRequestsActivity"
             android:exported="false" />
         <activity
@@ -22,7 +31,7 @@
             android:name=".View.RequestActivity"
             android:exported="false" />
         <activity
-            android:name=".View.AddItemView"
+            android:name=".View.AddItemActivity"
             android:exported="false" />
         <activity
             android:name=".View.MyAccountActivity"

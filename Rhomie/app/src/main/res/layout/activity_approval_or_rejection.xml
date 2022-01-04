@@ -65,8 +65,6 @@
         android:layout_marginStart="70dp"
         android:layout_marginTop="100dp"
         android:onClick="RejectRequest"
-        android:backgroundTint="#F11C1C"
-        android:background="@drawable/btn_bg"
         android:text="Reject"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/message" />
@@ -77,7 +75,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="70dp"
         android:onClick="ApproveRequest"
-        android:backgroundTint="@color/design_default_color_secondary"
         android:text="Approve"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/rejectionButton" />
