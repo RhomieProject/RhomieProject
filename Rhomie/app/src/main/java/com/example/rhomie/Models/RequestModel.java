@@ -36,7 +36,7 @@ public class RequestModel extends Observable {
                 for(DataSnapshot dts: snapshot.getChildren()){
                     Item item = dts.getValue(Item.class);
                     if(item.getItem().equals(item_id)) {
-                        pushReq.setValue(item_id).
+                        pushReq.setValue(request).
                             addOnSuccessListener(suc->{
                                 addToUserReq(item,request);
                                 setChanged();
