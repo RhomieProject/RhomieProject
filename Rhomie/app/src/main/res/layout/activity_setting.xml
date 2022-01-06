@@ -21,7 +21,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="100dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/profileImage" />
 
     <TextView
         android:id="@+id/emailAddressTitle"
@@ -98,7 +98,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginBottom="20dp"
         android:onClick="goToChangeInfo"
-        android:text="Change Info"
+        android:text="Change Profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -111,5 +111,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ChangeInfoButton"
         app:layout_constraintTop_toTopOf="@+id/ChangeInfoButton" />
+
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="153dp"
+        android:layout_height="157dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeButton"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <ImageView
+        android:id="@+id/setImageView"
+        android:layout_width="37dp"
+        android:layout_height="33dp"
+        app:layout_constraintBottom_toBottomOf="@+id/profileImage"
+        app:layout_constraintStart_toStartOf="@+id/profileImage"
+        app:srcCompat="@mipmap/ic_image_round" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
