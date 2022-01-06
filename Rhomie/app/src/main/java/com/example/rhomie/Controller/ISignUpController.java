@@ -13,5 +13,5 @@ public interface ISignUpController {
      * @param email
      * @param password
      */
-    public void OnSignUp(String first_name,String last_name,String id,String phone_number,String email,String password);
+    public void OnSignUp(int choose,String first_name,String last_name,String id,String phone_number,String email,String password);
 }

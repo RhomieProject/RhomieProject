@@ -34,7 +34,7 @@ public class ApprovalOrRejectionController implements Observer {
             view.OnSuccessA("Successfully approval apartment");
         }
         else if ((int)arg == -1)
-            view.OnSuccessR("Successfully reject apartment");
+            view.OnSuccessR("You are reject the apartment");
         else
             view.OnError("Failed");
     }

@@ -20,7 +20,6 @@ public class AddItemController implements Observer {
     }
 
     public void OnAddItem(Address address, Flags flags, String check_in, String check_out, String guest_number){
-
         Item item = new Item(" ",address, flags, check_in, check_out, guest_number, model.getUser());
         int addItemCode = item.isValid();
 
@@ -42,18 +41,19 @@ public class AddItemController implements Observer {
             view.AddItemError("Check-Out should be later than Check-In");
 
         if(addItemCode == -1)
-            model.addItem(item);
+            model.getUserType(item);
     }
 
     @Override
     public void update(Observable o, Object arg) {
 
-        if((boolean) arg){
+        if ((boolean) arg) {
             //success
             view.AddItemSuccess("Successfully added item");
-        }else{
+        } else {
             //failed
             view.AddItemError("Failed added item");
         }
+
     }
 }

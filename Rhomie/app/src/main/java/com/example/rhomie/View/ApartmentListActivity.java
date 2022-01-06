@@ -33,9 +33,9 @@ public class ApartmentListActivity extends AppCompatActivity implements IApartme
     }
 
     @Override
-    public void drawItems(ArrayList<Item> items) {
+    public void drawItems(ArrayList<ArrayList<Item>> items) {
         ArrayList<String> itemsS = new ArrayList<>();
-        for(Item item:items){
+        for(Item item:items.get(0)){
             itemsS.add(item.itemToString(false));
         }
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,itemsS);
@@ -45,15 +45,27 @@ public class ApartmentListActivity extends AppCompatActivity implements IApartme
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(ApartmentListActivity.this, RequestActivity.class);
-                i.putExtra("item_id", items.get(position).getItem());
-                i.putExtra("user_id", items.get(position).getFatherID());
-                i.putExtra("city",items.get(position).getAddress().getCity());
-                i.putExtra("check_in",items.get(position).getCheckIn());
-                i.putExtra("check_out",items.get(position).getCheckOut());
-                i.putExtra("guest_number",items.get(position).getGuestNumber());
-                i.putExtra("flags",items.get(position).getFlags().flagsToString());
+                Intent i;
+                if(!items.get(0).get(position).getIsSwitcher())
+                    i = new Intent(ApartmentListActivity.this, RequestActivity.class);
+                else {
+                    i = new Intent(ApartmentListActivity.this, SwitcherRequestActivity.class);
+                    ArrayList<String> myItems = new ArrayList<>();
+                    if (!items.get(1).isEmpty())
+                        for (Item item : items.get(1))
+                            myItems.add(item.getAddress().addressToString() + " " + item.getCheckIn() + " - " + item.getCheckOut());
+                    i.putExtra("items", myItems);
+
+                }
+                i.putExtra("item_id", items.get(0).get(position).getItem());
+                i.putExtra("user_id", items.get(0).get(position).getFatherID());
+                i.putExtra("city", items.get(0).get(position).getAddress().getCity());
+                i.putExtra("check_in", items.get(0).get(position).getCheckIn());
+                i.putExtra("check_out", items.get(0).get(position).getCheckOut());
+                i.putExtra("guest_number", items.get(0).get(position).getGuestNumber());
+                i.putExtra("flags", items.get(0).get(position).getFlags().flagsToString());
                 startActivity(i);
+
             }
         });
 

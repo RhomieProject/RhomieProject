@@ -12,8 +12,7 @@ public class SignUpModel extends Observable implements ISignUpModel {
     private FirebaseAuth mAuth;
 
     public SignUpModel() {
-        FirebaseDatabase db = FirebaseDatabase.getInstance();
-        this.users = db.getReference("Users");
+        this.users = FirebaseDatabase.getInstance().getReference("Users");
         this.mAuth = FirebaseAuth.getInstance();
     }
 
@@ -23,24 +22,28 @@ public class SignUpModel extends Observable implements ISignUpModel {
     }
 
     @Override
-    public void addUser(IUser user) {
-
+    public void addUser(String choose, IUser user) {
         mAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())
             .addOnSuccessListener(suc->{
                 users.child(mAuth.getUid()).setValue(user)
                     .addOnSuccessListener(suc2->{
                         //success to add user to authentication database and realtime database.users.
+                        int chs = 0;
+                        if(choose.equals("Users"))
+                          chs = -1;
+                        else if(choose.equals("SwitcherUsers"))
+                            chs = 1;
                         setChanged();
-                        notifyObservers(-1);
+                        notifyObservers(chs);
                     }).addOnFailureListener(fail->{
                             //success to add user to authentication database but not to the realtime database.users.
                         setChanged();
-                        notifyObservers(1);
+                        notifyObservers(2);
                     });
             }).addOnFailureListener(fail->{
                 // failed to add user to authentication database - probably he is exist already.
                 setChanged();
-                notifyObservers(2);
+                notifyObservers(3);
             });
     }
 }

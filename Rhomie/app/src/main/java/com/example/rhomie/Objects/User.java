@@ -4,17 +4,10 @@ import java.util.HashMap;
 import java.util.regex.Pattern;
 
 public class User implements IUser{
-    private String email;
-    private String password;
-    private String first_name;
-    private String last_name;
-    private String phone_number;
-    private String id;
-    private static final int EMPTYFIELD = 0;
-    private static final int MINNAMELENGTH = 2;
-    private static final int MINPASSWORDLENGTH = 6;
-    private static final int IDLENGTH = 9;
-    private static final int PHONELENGTH = 10;
+    private String email,password,first_name,last_name,phone_number,id;
+    private boolean is_switcher;
+    private static final int EMPTYFIELD = 0,MINNAMELENGTH = 2,MINPASSWORDLENGTH = 6,IDLENGTH = 9,PHONELENGTH = 10;
+
 
     /* Default Constructor */
     public User () {
@@ -24,6 +17,7 @@ public class User implements IUser{
         last_name = "";
         phone_number = "";
         id = "";
+        is_switcher = false;
     }
     /* Constructor */
     public User (String em,String pass) {
@@ -33,6 +27,7 @@ public class User implements IUser{
         last_name = "";
         phone_number = "";
         id = "";
+        is_switcher = false;
     }
 
     /* Full Constructor*/
@@ -43,6 +38,7 @@ public class User implements IUser{
         this.last_name = ln;
         this.phone_number = pn;
         this.id = id;
+        this.is_switcher = false;
     }
 
     /* Email */
@@ -116,6 +112,7 @@ public class User implements IUser{
         user.put("last_name", this.last_name);
         user.put("phone_number", this.phone_number);
         user.put("id", this.id);
+        user.put("switcher",this.is_switcher);
         return user;
     }
 

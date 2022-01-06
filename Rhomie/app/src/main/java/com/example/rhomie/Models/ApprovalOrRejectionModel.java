@@ -2,8 +2,10 @@ package com.example.rhomie.Models;
 
 import androidx.annotation.NonNull;
 
+import com.example.rhomie.Objects.IRequest;
 import com.example.rhomie.Objects.Item;
 import com.example.rhomie.Objects.Request;
+import com.example.rhomie.Objects.SwitcherRequest;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,8 +30,13 @@ public class ApprovalOrRejectionModel extends Observable {
         items.child(user).child(item).child("requests").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                boolean isSwitcher = snapshot.getValue(Item.class).getIsSwitcher();
+                IRequest request;
                 for(DataSnapshot dts : snapshot.getChildren()){
-                    Request request = dts.getValue(Request.class);
+                    if(isSwitcher)
+                        request = dts.getValue(SwitcherRequest.class);
+                    else
+                        request = dts.getValue(Request.class);
                     if(request.getID().equals(req)){
                         dts.getRef().child("status").setValue(1);
                         dts.getRef().getParent().getParent().child("isAvailable").setValue(false);
@@ -61,7 +68,7 @@ public class ApprovalOrRejectionModel extends Observable {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 snapshot.getRef().child("status").setValue(-1);
-                UpdateData(item,snapshot.getValue(Request.class).getFromUserID(),-1);
+                UpdateData(item,snapshot.getValue(IRequest.class).getFromUserID(),-1);
 
                 setChanged();
                 notifyObservers(-1);

@@ -3,6 +3,7 @@ package com.example.rhomie.Controller;
 import android.util.Log;
 import com.example.rhomie.Models.ISignUpModel;
 import com.example.rhomie.Models.SignUpModel;
+import com.example.rhomie.Objects.SwitcherUser;
 import com.example.rhomie.Objects.User;
 import com.example.rhomie.View.ISignUpView;
 import java.util.Observable;
@@ -20,11 +21,16 @@ public class SignUpController implements ISignUpController, Observer {
     }
 
     @Override
-    public void OnSignUp(String first_name, String last_name, String id, String phone_number, String email, String password) {
+    public void OnSignUp(int db,String first_name, String last_name, String id, String phone_number, String email, String password) {
+        int signupCode;
         User user = new User(email, password, first_name, last_name, phone_number, id);
-        int signupCode = user.isValid();
+        SwitcherUser switcherUser = new SwitcherUser(email, password, first_name, last_name, phone_number, id);
 
-        //TODO to write the reason its not correct for each massage
+        if (db == -1)
+            signupCode = user.isValid();
+        else
+            signupCode = switcherUser.isValid();
+
         if(signupCode == 0){
             Log.e("user","user cant be null"); //its mean code problem.
         }
@@ -46,13 +52,10 @@ public class SignUpController implements ISignUpController, Observer {
         if(signupCode == 6){
             view.signUpError("Password must be up than 6");
         }
-        if(signupCode == -1){
-
-            //TODO change isIn method to addUser method.
-            model.addUser(user);
-
-
-        }
+        if(signupCode == -1 && db == -1)
+            model.addUser("Users",user);
+        else if(signupCode == -1 && db == 1)
+            model.addUser("SwitcherUsers",switcherUser);
     }
 
     /** this function called automatic from SignUpModel.addUser()
@@ -63,13 +66,13 @@ public class SignUpController implements ISignUpController, Observer {
     @Override
     public void update(Observable o, Object arg) {
         int keyCode = (int) arg;
-        if(keyCode == -1){
-            view.signUpSuccess("Successfully signed up!");
-        }else if(keyCode == 1){
+        if(keyCode == -1)
+            view.signUpSuccess(-1,"Successfully signed up!");
+        else if(keyCode == 1)
+            view.signUpSuccess(1,"Successfully signed up!");
+        else if(keyCode == 2)
             Log.e("firebase", "the user added to the authentication but not to realtime database");
-        }else if (keyCode == 2){
+        else if (keyCode == 3)
             view.signUpError("Email already exists!");
-        }
-
     }
 }

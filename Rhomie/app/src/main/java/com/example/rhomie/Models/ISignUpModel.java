@@ -24,6 +24,6 @@ public interface ISignUpModel {
      * this function updates automatic the controller and call the Controller.update() function.
      * @param user
      */
-    public void addUser(IUser user);
+    public void addUser(String choose, IUser user);
 
 }

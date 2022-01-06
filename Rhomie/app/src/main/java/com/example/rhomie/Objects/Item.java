@@ -9,15 +9,11 @@ import java.util.List;
 
 public class Item {
 
-    private String item_id;
     private Address address;
     private Flags flags;
-    private String check_in;
-    private String check_out;
-    private String guest_number;
-    private boolean is_available;
-    private String fatherID;
-    private ArrayList<Request> requestList;
+    private String item_id,fatherID,check_in,check_out,guest_number;
+
+    private boolean is_available, is_switcher;
     private static int count;
 
     /* Default Constructor */
@@ -28,9 +24,8 @@ public class Item {
         check_in = null;
         check_out = null;
         guest_number = "";
-        is_available = true;
         fatherID = null;
-        requestList = null;
+
     }
 
     /* Full Constructor */
@@ -42,8 +37,8 @@ public class Item {
         this.check_out = co;
         this.guest_number = gn;
         this.is_available = true;
+        is_switcher = true;
         this.fatherID = father;
-        requestList = null;
     }
 
     /* Item ID */
@@ -112,14 +107,13 @@ public class Item {
         return this.fatherID;
     }
 
-    public ArrayList<Request> getRequestList(){
-        return requestList;
+    public boolean getIsSwitcher() {
+        return is_switcher;
     }
 
-    public void addRequest(Request request){
-        requestList.add(count++,request);
+    public void setIsSwitcher(boolean is_switcher) {
+        this.is_switcher = is_switcher;
     }
-
 
     public HashMap<String,Object> itemToMap () {
         HashMap<String, Object> item = new HashMap<>();

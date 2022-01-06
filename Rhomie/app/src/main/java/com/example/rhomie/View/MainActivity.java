@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToSignUpPage(View view) {
-        startActivity(new Intent(this, SignUpActivity.class));
+        startActivity(new Intent(this, ChooseUserActivity.class));
     }
 
 }

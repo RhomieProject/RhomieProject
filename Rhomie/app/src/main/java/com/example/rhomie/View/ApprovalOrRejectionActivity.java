@@ -13,7 +13,7 @@ import com.example.rhomie.Controller.RequestController;
 import com.example.rhomie.R;
 
 public class ApprovalOrRejectionActivity extends AppCompatActivity {
-    private TextView fullNameText, phoneNumberText, messageText;
+    private TextView fullNameText, phoneNumberText, messageText,itemToChangeText;
     private String reqID,itemID;
     private ApprovalOrRejectionController controller;
 
@@ -27,7 +27,7 @@ public class ApprovalOrRejectionActivity extends AppCompatActivity {
         fullNameText = findViewById(R.id.fullName);
         phoneNumberText = findViewById(R.id.phoneNumber);
         messageText = findViewById(R.id.message);
-
+        itemToChangeText = findViewById(R.id.itemToChange);
         Intent intent = this.getIntent();
         if(intent != null) {
             reqID = intent.getStringExtra("req_id");
@@ -35,10 +35,12 @@ public class ApprovalOrRejectionActivity extends AppCompatActivity {
             String fullName = intent.getStringExtra("full_name");
             String phoneNumber = intent.getStringExtra("phone_number");
             String message = intent.getStringExtra("message");
-
+            String itemToChange = intent.getStringExtra("itemToChange");
             fullNameText.setText(fullName);
             phoneNumberText.setText(phoneNumber);
             messageText.setText(message);
+            if(itemToChange!= null)
+                itemToChangeText.setText(itemToChange);
         }
     }
 

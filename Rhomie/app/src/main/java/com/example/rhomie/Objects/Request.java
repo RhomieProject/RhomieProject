@@ -4,7 +4,7 @@ import com.example.rhomie.View.MyRequestsActivity;
 
 import java.util.ArrayList;
 
-public class Request {
+public class Request implements IRequest {
 
     private String requestID;
     private String itemID;
@@ -117,6 +117,16 @@ public class Request {
 
     public String getDetails(){
         return details;
+    }
+
+    @Override
+    public String getItemToChange() {
+        return null;
+    }
+
+    @Override
+    public void setItemToChange(String itemToChange) {
+
     }
 
     public int isValid() {

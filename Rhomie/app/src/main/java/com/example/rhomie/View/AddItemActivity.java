@@ -105,9 +105,7 @@ public class AddItemActivity extends AppCompatActivity {
         Flags flags = new Flags(Kosher, Animals, Accessibility, Parking, Smoking, WiFi);
 
         progressBar.setVisibility(View.VISIBLE);
-
         controller.OnAddItem(address, flags, CheckIn, CheckOut, GuestNumber);
-
     }
 
     public void AddItemSuccess(String massage){

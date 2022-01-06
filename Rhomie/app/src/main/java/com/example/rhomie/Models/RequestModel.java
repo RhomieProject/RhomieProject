@@ -2,8 +2,10 @@ package com.example.rhomie.Models;
 
 import androidx.annotation.NonNull;
 
+import com.example.rhomie.Objects.IRequest;
 import com.example.rhomie.Objects.Item;
 import com.example.rhomie.Objects.Request;
+import com.example.rhomie.Objects.SwitcherRequest;
 import com.example.rhomie.Objects.User;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,35 +21,31 @@ import java.util.Observable;
 
 public class RequestModel extends Observable {
     private DatabaseReference items,requests,users;
+    private boolean available;
     public RequestModel(){
         items = FirebaseDatabase.getInstance().getReference("UserApartments");
         requests = FirebaseDatabase.getInstance().getReference("UserRequests");
         users = FirebaseDatabase.getInstance().getReference("Users");
-
     }
 
-    public void addRequest(String item_id,String user_id, Request request) {
-        DatabaseReference pushReq = items.child(user_id).child(item_id).child("requests").push();
+    public void addRequest(String item_id,String user_id, IRequest request,boolean switcher,String myItem) {
+        DatabaseReference pushReq = items.child(user_id).child(item_id).child("requests").child(request.getFromUserID());
         String reqKey = pushReq.getKey();
+        request.setItemToChange(myItem);
         request.setID(reqKey);
-        items.child(user_id).addValueEventListener(new ValueEventListener() {
+        items.child(user_id).child(item_id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dts: snapshot.getChildren()){
-                    Item item = dts.getValue(Item.class);
-                    if(item.getItem().equals(item_id)) {
-                        pushReq.setValue(request).
-                            addOnSuccessListener(suc->{
-                                addToUserReq(item,request);
-                                setChanged();
-                                notifyObservers(true);
-                            }).addOnFailureListener(failed->{
-                                setChanged();
-                                notifyObservers(false);
-                            });
-                    }
-                }
-
+                Item item = snapshot.getValue(Item.class);
+                pushReq.setValue(request).
+                addOnSuccessListener(suc -> {
+                    addToUserReq(item, request);
+                    setChanged();
+                    notifyObservers(true);
+                }).addOnFailureListener(failed -> {
+                    setChanged();
+                    notifyObservers(false);
+                });
             }
 
             @Override
@@ -55,7 +53,7 @@ public class RequestModel extends Observable {
         });
     }
 
-    private void addToUserReq(Item item, Request request){
+    private void addToUserReq(Item item, IRequest request){
         String user = getUser();
         String details = item.getAddress().getCity()+'#'+item.getGuestNumber()+'#'+item.getCheckIn()+" - "+item.getCheckOut()+'#'+item.getAddress().addressToString()+'#';
         requests.child(user).child(item.getItem()).setValue(request);
@@ -67,8 +65,7 @@ public class RequestModel extends Observable {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
-    public void getDetails(String item,String user_id,String message) {
-
+    public void getDetails(String item,String user_id,String message,String itemDetails,String switcher) {
         users.child(getUser()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -81,6 +78,9 @@ public class RequestModel extends Observable {
                 details.add(message);
                 details.add(fullName);
                 details.add(phoneNumber);
+                details.add(switcher);
+                details.add(itemDetails);
+
                 setChanged();
                 notifyObservers(details);
             }

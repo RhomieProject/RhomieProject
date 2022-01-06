@@ -68,6 +68,8 @@ public class MyAccountActivity extends AppCompatActivity implements IMyAccountVi
                 i.putExtra("parking",items.get(position).getFlags().getParking());
                 i.putExtra("smoking",items.get(position).getFlags().getSmoking());
                 i.putExtra("wi_fi",items.get(position).getFlags().getWiFi());
+//                if(items.get(position).isIs_switcher())
+//                    i.putExtra("item_details",items.get(position).)
 
 
                 startActivity(i);

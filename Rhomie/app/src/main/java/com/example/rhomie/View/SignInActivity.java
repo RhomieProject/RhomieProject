@@ -15,6 +15,7 @@ import com.example.rhomie.R;
 public class SignInActivity extends AppCompatActivity implements ISignInView {
     private EditText email, password;
     private ISignInController controllerSignIn;
+    private int choose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class SignInActivity extends AppCompatActivity implements ISignInView {
 
         email = findViewById(R.id.EmailAddress);
         password = findViewById(R.id.Password);
+
     }
 
     public void onLogin(View view) {
@@ -37,6 +39,7 @@ public class SignInActivity extends AppCompatActivity implements ISignInView {
     public void signInSuccess(String massage) {
         Toast.makeText(SignInActivity.this, massage, Toast.LENGTH_SHORT).show();
         startActivity(new Intent(SignInActivity.this, HomeActivity.class));
+
     }
     @Override
     public void signInError(String massage) {

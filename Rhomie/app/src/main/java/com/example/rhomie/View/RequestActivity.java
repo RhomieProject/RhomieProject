@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,8 +16,10 @@ import com.example.rhomie.R;
 public class RequestActivity extends AppCompatActivity implements IRequestView {
     private RequestController controller;
     private TextView cityText, checkInText, checkOutText, guestNumberText, flagsText;
+    private Spinner spinner;
     private EditText descriptionText;
     private String item_id, user_id;
+    private boolean switcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class RequestActivity extends AppCompatActivity implements IRequestView {
             String check_out = intent.getStringExtra("check_out");
             String guest_number = intent.getStringExtra("guest_number");
             String flags = intent.getStringExtra("flags");
+            switcher = intent.getBooleanExtra("switcher",false);
 
             cityText.setText(city);
             checkInText.setText(check_in);
@@ -70,5 +74,6 @@ public class RequestActivity extends AppCompatActivity implements IRequestView {
     @Override
     public void OnError(String massage) {
         Toast.makeText(RequestActivity.this, massage, Toast.LENGTH_SHORT).show();
+
     }
 }

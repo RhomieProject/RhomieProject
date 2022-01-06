@@ -21,6 +21,7 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
     private ProgressBar progressBar;
     private Spinner spinner;
     private String selectedText;
+    private int user;
     private ArrayAdapter<CharSequence> adapter;
 
     @Override
@@ -55,6 +56,10 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
         email = findViewById(R.id.edtxtEmail);
         password = findViewById(R.id.edtxtPassword);
 
+        Intent intent = this.getIntent();
+        if(intent != null)
+            user = intent.getIntExtra("user",0);
+
         progressBar = findViewById(R.id.progressBar);
     }
 
@@ -69,14 +74,22 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
         progressBar.setVisibility(View.VISIBLE);
 
         //calls to the controller the dos the rest.
-        controllerSignUp.OnSignUp(f_nameS,l_nameS,idS,phone_numberS,emailS,passwordS);
+        controllerSignUp.OnSignUp(user,f_nameS,l_nameS,idS,phone_numberS,emailS,passwordS);
+
     }
 
     @Override
-    public void signUpSuccess(String massage) {
+    public void signUpSuccess(int choose, String massage) {
         progressBar.setVisibility(View.INVISIBLE);
         Toast.makeText(SignUpActivity.this, massage, Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(SignUpActivity.this, SignInActivity.class));//TODO
+
+        if(user == -1)
+            startActivity(new Intent(SignUpActivity.this, SignInActivity.class));
+        else if (user == 1) {
+            Intent intent = new Intent(SignUpActivity.this, AddItemActivity.class);
+            intent.putExtra("choose",true);
+            startActivity(intent);
+        }
     }
 
     @Override

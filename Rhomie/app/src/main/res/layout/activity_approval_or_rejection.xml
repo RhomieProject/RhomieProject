@@ -42,6 +42,14 @@
         app:layout_constraintTop_toTopOf="@+id/phoneNumberTitle" />
 
     <TextView
+        android:id="@+id/itemToChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@+id/messageTitle"
+        app:layout_constraintTop_toBottomOf="@+id/message" />
+
+    <TextView
         android:id="@+id/messageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,7 +75,7 @@
         android:onClick="RejectRequest"
         android:text="Reject"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/message" />
+        app:layout_constraintTop_toBottomOf="@+id/itemToChange" />
 
     <Button
         android:id="@+id/approvalButton"

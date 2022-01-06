@@ -20,13 +20,20 @@ public class ApartmentListController implements IApartmentListController, Observ
 
     @Override
     public void getItems() {
-        model.getItems();
+        model.getUserType();
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        ArrayList<Item> items = (ArrayList<Item>) arg;
+        ArrayList<ArrayList<Item>> items = (ArrayList<ArrayList<Item>>) arg;
         if(items != null)
             view.drawItems(items);
+//
+//        if(items.get(0) != null){
+//            view.drawItems(items.get(0));
+//        if(items.get(1) != null)
+//            view.getMyItems(items.get(1));
+//        }
+
     }
 }

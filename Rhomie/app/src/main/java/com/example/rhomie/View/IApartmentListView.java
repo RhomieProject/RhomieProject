@@ -8,5 +8,5 @@ import java.util.ArrayList;
 
 public interface IApartmentListView {
 
-    void drawItems(ArrayList<Item> items);
+    void drawItems(ArrayList<ArrayList<Item>> items);
 }

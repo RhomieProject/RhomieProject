@@ -1,6 +1,7 @@
 package com.example.rhomie.Controller;
 
 import com.example.rhomie.Models.MyItemModel;
+import com.example.rhomie.Objects.IRequest;
 import com.example.rhomie.Objects.Request;
 import com.example.rhomie.View.MyItemActivity;
 
@@ -24,7 +25,7 @@ public class MyItemController implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        ArrayList<Request> requestList = (ArrayList<Request>) arg;
+        ArrayList<IRequest> requestList = (ArrayList<IRequest>) arg;
         if(requestList != null)
             view.drawRequests(requestList);
     }

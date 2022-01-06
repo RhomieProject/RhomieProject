@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.rhomie.Controller.MyItemController;
+import com.example.rhomie.Objects.IRequest;
 import com.example.rhomie.Objects.Request;
 import com.example.rhomie.R;
 
@@ -70,9 +71,9 @@ public class MyItemActivity extends AppCompatActivity {
         controller.getRequests(item_id);
     }
 
-    public void drawRequests(ArrayList<Request> requestList) {
+    public void drawRequests(ArrayList<IRequest> requestList) {
         ArrayList<String> requests = new ArrayList<>();
-        for(Request req: requestList){
+        for(IRequest req: requestList){
             requests.add(req.requestToString());
         }
         adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, requests);
@@ -89,6 +90,7 @@ public class MyItemActivity extends AppCompatActivity {
                     i.putExtra("full_name", requestList.get(position).getFullName());
                     i.putExtra("phone_number", requestList.get(position).getPhoneNumber());
                     i.putExtra("message", requestList.get(position).getMessage());
+                    i.putExtra("itemToChange",requestList.get(position).getItemToChange());
                     startActivity(i);
                 }
             }
