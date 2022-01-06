@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rhomie">
         <activity
+            android:name=".View.SwitcherRequestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.ChooseUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.SettingActivity"
             android:exported="false" />
         <activity
