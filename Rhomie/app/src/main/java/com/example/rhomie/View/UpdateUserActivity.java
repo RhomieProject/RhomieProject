@@ -51,7 +51,7 @@ public class UpdateUserActivity extends AppCompatActivity {
     }
     public void OnSuccess(String message){
         Toast.makeText(UpdateUserActivity.this, message, Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(UpdateUserActivity.this,MyAccountActivity.class));
+        startActivity(new Intent(UpdateUserActivity.this,SettingActivity.class));
     }
 
     public void OnError(String message) {

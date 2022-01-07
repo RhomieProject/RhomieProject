@@ -66,9 +66,8 @@ public class ApprovalOrRejectionModel extends Observable {
         items.child(user).child(item).child("requests").child(req).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 snapshot.getRef().child("status").setValue(-1);
-                UpdateData(item,snapshot.getValue(IRequest.class).getFromUserID(),-1);
+                UpdateData(item,snapshot.getValue(Request.class).getFromUserID(),-1);
 
                 setChanged();
                 notifyObservers(-1);
